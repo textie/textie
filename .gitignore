@@ -11,15 +11,9 @@ doc/**/*
 log/*.log
 public/uploads
 rerun.txt
-/storage/*
+spec/examples.txt
+storage/*
 tmp/*
 vendor/bundle
 vendor/cache
 vendor/ruby
-/public/assets
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity

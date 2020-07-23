@@ -1,19 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my personal development project.
 
-Things you may want to cover:
+* Ruby version: 2.7.1
 
-* Ruby version
-
-* System dependencies
+* System dependencies: libpq-dev
 
 * Configuration
 
-* Database creation
+* Database creation:
 
-* Database initialization
+    rails db:create
+    rails db:migrate
+
+* Database initialization:
+
+    rails db:seed
 
 * How to run the test suite
 

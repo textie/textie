@@ -15,16 +15,6 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "bcrypt", "~> 3.1.7"
 gem "jbuilder", "~> 2.7"
 
-group :test do
-  gem "capybara"
-  gem "capybara-email"
-  gem "database_cleaner"
-  gem "guard-rspec"
-  gem "launchy"
-  gem "rspec-its"
-  gem "shoulda-matchers"
-end
-
 group :development, :test do
   gem "brakeman", require: false
   gem "bullet"
@@ -38,6 +28,14 @@ group :development, :test do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+end
+
+group :test do
+  gem "database_cleaner-active_record"
+  gem "guard-rspec"
+  gem "launchy"
+  gem "rspec-its"
+  gem "shoulda-matchers"
 end
 
 group :development do
