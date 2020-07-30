@@ -6,16 +6,12 @@ This is my personal development project.
 
 * System dependencies: libpq-dev
 
-* Configuration
-
-* Database creation:
-
-    rails db:create
-    rails db:migrate
+* See `.env.example` for required environment variables.
 
 * Database initialization:
-
-    rails db:seed
+```
+    rails db:setup
+```
 
 * How to run the test suite
 
