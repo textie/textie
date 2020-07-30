@@ -79,6 +79,8 @@ GEM
     database_cleaner-active_record (1.8.0)
       activerecord
       database_cleaner (~> 1.8.0)
+    decent_exposure (3.0.2)
+      activesupport (>= 4.0)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
@@ -274,6 +276,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   database_cleaner-active_record
+  decent_exposure (~> 3.0.0)
   dotenv-rails
   factory_bot_rails
   ffaker

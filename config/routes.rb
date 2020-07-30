@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  module :api do
-    module :v1 do
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: %i[create]
     end
   end
 end

@@ -14,6 +14,7 @@ gem "pg", ">= 0.18", "< 2.0"
 
 gem "bcrypt", "~> 3.1.7"
 gem "jbuilder", "~> 2.7"
+gem "decent_exposure", "~> 3.0.0"
 
 group :development, :test do
   gem "brakeman", require: false

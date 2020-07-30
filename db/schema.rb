@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_07_28_124743) do
 
   create_table "users", force: :cascade do |t|
     t.citext "email", null: false
-    t.string "full_name"
+    t.string "full_name", default: "", null: false
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
