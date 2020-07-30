@@ -7,14 +7,15 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.2"
 
 gem "bootsnap", ">= 1.4.2", require: false
 gem "puma", "~> 4.1"
-# gem 'rack-cors'
-
-gem "pg", ">= 0.18", "< 2.0"
-# gem 'image_processing', '~> 1.2'
+gem "rack-cors"
 
 gem "bcrypt", "~> 3.1.7"
-gem "jbuilder", "~> 2.7"
+# gem "image_processing", "~> 1.2"
+gem "jwt"
+gem "pg", ">= 0.18", "< 2.0"
+
 gem "decent_exposure", "~> 3.0.0"
+gem "jbuilder", "~> 2.7"
 
 group :development, :test do
   gem "brakeman", require: false
