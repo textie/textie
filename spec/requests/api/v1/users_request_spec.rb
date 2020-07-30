@@ -6,7 +6,6 @@ RSpec.describe "Api::V1::Users", type: :request do
   describe "POST /api/v1/users" do
     context "with valid attributes" do
       let(:valid_attributes) { attributes_for(:user) }
-
       let(:request) { post api_v1_users_url, params: { user: valid_attributes } }
 
       it "creates user" do
