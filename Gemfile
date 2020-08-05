@@ -11,6 +11,7 @@ gem "rack-cors"
 
 gem "bcrypt", "~> 3.1.7"
 # gem "image_processing", "~> 1.2"
+gem "interactor"
 gem "jwt"
 gem "pg", ">= 0.18", "< 2.0"
 

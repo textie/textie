@@ -113,6 +113,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     i18n (1.8.4)
       concurrent-ruby (~> 1.0)
+    interactor (3.1.2)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jwt (2.2.1)
@@ -284,6 +285,7 @@ DEPENDENCIES
   factory_bot_rails
   ffaker
   guard-rspec
+  interactor
   jbuilder (~> 2.7)
   jwt
   launchy
