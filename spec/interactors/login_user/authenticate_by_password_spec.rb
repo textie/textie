@@ -21,7 +21,7 @@ RSpec.describe LoginUser::AuthenticateByPassword do
       it { is_expected.to be_a_failure }
 
       it "removes user from context" do
-        expect(result.user).to be_nil
+        expect(result.user).not_to be_a User
       end
     end
   end
