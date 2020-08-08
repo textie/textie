@@ -5,7 +5,8 @@ class LoginUser
     delegate :user, :password, to: :context
 
     def call
-      fail! unless user.authenticate(password)
+      context.user = user.authenticate(password)
+      fail! unless user
     end
 
     private
