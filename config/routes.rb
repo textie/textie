@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       resources :sessions, only: %i[create]
       resource :profile, only: %i[show]
 
-      resources :courses
+      resources :courses do
+        resource :enrollments
+      end
     end
   end
 end
