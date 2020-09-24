@@ -36,7 +36,10 @@ jobs:
       db:
         image: postgres
         ports: ['5432:5432']
-        env: ${{ env }}
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
