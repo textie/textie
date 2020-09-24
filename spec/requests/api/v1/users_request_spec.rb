@@ -1,5 +1,5 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Api::V1::Users", type: :request do
-
+  pending "TODO: add examples for users_controller"
 end
