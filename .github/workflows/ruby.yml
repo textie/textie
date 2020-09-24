@@ -7,7 +7,7 @@ env:
   POSTGRES_PASSWORD: postgres
   POSTGRES_HOST: localhost
   POSGRES_DB: textie
-  DATABASE_URL: "postgresql://${{ env.POSTGRES_USER }}:${{ env.POSTGRES_PASSWORD }}@${{ env.POSTGRES_HOST }}/${{ env.POSTGRES_DB }}"
+  DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/textie"
   RAILS_ENV: test
 
 jobs:
