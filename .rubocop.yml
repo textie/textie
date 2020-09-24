@@ -46,7 +46,7 @@ Lint/StructNewOverride:
 
 Metrics/BlockLength:
   Exclude:
-    - spec/**/*
+    - spec/**/*_spec.rb
 
 Style/AccessorGrouping:
   Enabled: true
@@ -171,3 +171,6 @@ Rails/ShortI18n:
 
 Rails/WhereExists:
   Enabled: true
+
+RSpec/NestedGroups:
+  Max: 4

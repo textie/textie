@@ -6,11 +6,10 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV.fetch("DB_NAME", "#{Rails.root.basename}_dev") %>
+  url: <%= ENV["DATABASE_URL"] %>_development
 
 test:
   <<: *default
-  database: <%= ENV.fetch("DB_NAME", "#{Rails.root.basename}_test") %>
+  url: <%= ENV["DATABASE_URL"] %>_test
 
-production:
-  <<: *default
+production: *default
