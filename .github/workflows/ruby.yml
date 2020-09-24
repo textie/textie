@@ -1,0 +1,26 @@
+name: Ruby
+
+on: [push]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    name: Code style
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7.1'
+      - name: Cache bundle
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gems-
+      - name: Install Rubocop
+        run: |
+          gem install bundler
+          bundle config path .bundle
+          bundle install --jobs 4
+      - name: Check code
+        run: bin/rubocop
