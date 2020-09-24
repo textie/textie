@@ -4,13 +4,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV["DATABASE_URL"] %>
 
-development:
-  <<: *default
-  database: <%= ENV.fetch("DB_NAME", "#{Rails.root.basename}_dev") %>
+development: *default
 
-test:
-  <<: *default
-  database: <%= ENV.fetch("DB_NAME", "#{Rails.root.basename}_test") %>
+test: *default
 
-production:
-  <<: *default
+production: *default
