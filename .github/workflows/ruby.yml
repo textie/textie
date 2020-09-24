@@ -36,7 +36,7 @@ jobs:
       db:
         image: postgres
         ports: ['5432:5432']
-        env: ${{env}}
+        env: ${{ env }}
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -53,7 +53,7 @@ jobs:
           path: .bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: ${{ runner.os }}-gems-
-      - name: Install Gems
+      - name: Install gems
         run: |
           gem install bundler
           bundle install --path .bundle --jobs 4
