@@ -2,7 +2,7 @@ name: Ruby
 
 on: [push]
 
-env: &env
+env:
   POSTGRES_HOST: localhost
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
@@ -36,7 +36,6 @@ jobs:
       db:
         image: postgres
         ports: ['5432:5432']
-        env: *env
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -58,10 +57,8 @@ jobs:
           gem install bundler
           bundle install --path .bundle --jobs 4
       - name: Migrate database
-        env: *env
         run: |
           cp .env.example .env
           bin/rails db:setup
       - name: Run tests
-        env: *env
         run: bin/rspec
