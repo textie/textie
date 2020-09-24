@@ -23,7 +23,7 @@ jobs:
           path: .bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: ${{ runner.os }}-gems-
-      - name: Install Gems
+      - name: Install gems
         run: |
           gem install bundler
           bundle install --path .bundle --jobs 4
@@ -61,8 +61,17 @@ jobs:
           gem install bundler
           bundle install --path .bundle --jobs 4
       - name: Migrate database
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
         run: |
           cp .env.example .env
           bin/rails db:setup
       - name: Run tests
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         run: bin/rspec
