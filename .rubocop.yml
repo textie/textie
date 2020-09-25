@@ -63,6 +63,9 @@ Style/CaseLikeIf:
 Style/Documentation:
   Enabled: false
 
+Style/EmptyMethod:
+  Enabled: false
+
 Style/ExponentialNotation:
   Enabled: true
 

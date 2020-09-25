@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :sessions, only: %i[create]
       resource :profile, only: %i[show]
 
-      resources :courses do
+      resources :courses, only: %i[index show create update] do
         resource :enrollments
       end
     end

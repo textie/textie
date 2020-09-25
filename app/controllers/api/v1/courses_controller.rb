@@ -26,10 +26,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  def destroy
-    course.destroy
-  end
-
   private
 
   def course_params
