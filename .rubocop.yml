@@ -46,7 +46,7 @@ Lint/StructNewOverride:
 
 Metrics/BlockLength:
   Exclude:
-    - spec/**/*
+    - spec/**/*_spec.rb
 
 Style/AccessorGrouping:
   Enabled: true

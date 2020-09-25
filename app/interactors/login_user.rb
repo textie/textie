@@ -1,7 +1,6 @@
 class LoginUser
   include Interactor::Organizer
 
-  organize LoginUser::FindUserByEmail,
-           LoginUser::AuthenticateByPassword,
+  organize LoginUser::AuthenticateUser,
            LoginUser::GenerateJwt
 end
