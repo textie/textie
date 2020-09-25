@@ -171,6 +171,3 @@ Rails/ShortI18n:
 
 Rails/WhereExists:
   Enabled: true
-
-RSpec/NestedGroups:
-  Max: 4
