@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     if result.success
       render :show, status: :created, location: result.course
     else
-      render json: result.errors, status: :unprocessable_entity
+      render json: { errors: result.errors }, status: :unprocessable_entity
     end
   end
 
@@ -22,13 +22,13 @@ class CoursesController < ApplicationController
     if course.update(course_params)
       render :show, status: :ok, location: course
     else
-      render json: course.errors, status: :unprocessable_entity
+      render json: { errors: course.errors }, status: :unprocessable_entity
     end
   end
 
   private
 
   def course_params
-    params.require(:course).permit(:title, :description)
+    params.require(:course).permit(:id, :title, :description)
   end
 end

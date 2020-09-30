@@ -1,25 +1,28 @@
 class EnrollmentsController < ApplicationController
   expose :course
   expose :enrollment, parent: :course
+  expose :enrollments, from: :current_user
+
+  def index
+    enrollments.includes(:course)
+  end
 
   def show
   end
 
   def create
-    @enrollment = Enrollment.new(enrollment_params)
-
-    if @enrollment.save
-      render :show, status: :created, location: @enrollment
+    if enrollment.save
+      render :show, status: :created, location: enrollment
     else
-      render json: @enrollment.errors, status: :unprocessable_entity
+      render json: { errors: enrollment.errors }, status: :unprocessable_entity
     end
   end
 
   def update
-    if @enrollment.update(enrollment_params)
-      render :show, status: :ok, location: @enrollment
+    if enrollment.update(enrollment_params)
+      render :show, status: :ok, location: enrollment
     else
-      render json: @enrollment.errors, status: :unprocessable_entity
+      render json: { errors: enrollment.errors }, status: :unprocessable_entity
     end
   end
 
@@ -30,6 +33,6 @@ class EnrollmentsController < ApplicationController
   private
 
   def enrollment_params
-    params.fetch(:enrollment, {})
+    params.fetch(:enrollment)
   end
 end

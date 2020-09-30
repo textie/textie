@@ -1,1 +1,1 @@
-json.partial! "enrollments/enrollment", enrollment: @enrollment
+json.partial! "enrollments/enrollment", enrollment: enrollment

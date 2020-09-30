@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_132828) do
+ActiveRecord::Schema.define(version: 2020_08_14_142059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2020_08_14_132828) do
     t.index ["author_id"], name: "index_courses_on_author_id"
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["user_id"], name: "index_enrollments_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.citext "email", null: false
     t.string "full_name", default: "", null: false
@@ -35,4 +42,6 @@ ActiveRecord::Schema.define(version: 2020_08_14_132828) do
   end
 
   add_foreign_key "courses", "users", column: "author_id"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "users"
 end
