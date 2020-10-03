@@ -4,7 +4,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true,
                     format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  has_many :enrollments
+  has_many :enrollments, dependent: :destroy
   has_many :courses, through: :enrollments
-  has_many :authored_courses, class_name: "Course", foreign_key: :author_id
+  has_many :authored_courses, class_name: "Course", foreign_key: :author_id,
+                              dependent: :restrict_with_error, inverse_of: :author
 end
