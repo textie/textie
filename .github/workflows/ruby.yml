@@ -6,7 +6,7 @@ env:
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
   POSTGRES_HOST: localhost
-  POSGRES_DB: textie
+  POSTGRES_DB: textie
   DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/textie"
   RAILS_ENV: test
 
