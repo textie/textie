@@ -117,6 +117,9 @@ GEM
     interactor (3.1.2)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    json_matchers (0.11.1)
+      json_schema
+    json_schema (0.20.9)
     jwt (2.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -139,6 +142,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.2)
     msgpack (1.3.3)
+    mustache (1.1.1)
     nenv (0.3.0)
     nio4r (2.5.4)
     nokogiri (1.10.10)
@@ -223,6 +227,10 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
+    rspec_api_documentation (6.1.0)
+      activesupport (>= 3.0.0)
+      mustache (~> 1.0, >= 0.99.4)
+      rspec (~> 3.0)
     rubocop (0.88.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.1)
@@ -288,6 +296,7 @@ DEPENDENCIES
   guard-rspec
   interactor
   jbuilder (~> 2.7)
+  json_matchers
   jwt
   launchy
   letter_opener
@@ -299,6 +308,7 @@ DEPENDENCIES
   rails-erd
   rspec-its
   rspec-rails
+  rspec_api_documentation
   rubocop
   rubocop-performance
   rubocop-rails

@@ -35,7 +35,9 @@ end
 group :test do
   gem "database_cleaner-active_record"
   gem "guard-rspec"
+  gem "json_matchers"
   gem "launchy"
+  gem "rspec_api_documentation"
   gem "rspec-its"
   gem "shoulda-matchers"
 end

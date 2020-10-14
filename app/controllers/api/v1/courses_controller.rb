@@ -1,6 +1,8 @@
 module Api
   module V1
     class CoursesController < ApplicationController
+      skip_before_action :authenticate_user!, only: %i[index show]
+
       expose :courses, -> { Course.all }
       expose :course
 
@@ -13,8 +15,8 @@ module Api
       def create
         result = CreateCourse.call(user: current_user, course: course)
 
-        if result.success
-          render :show, status: :created, location: result.course
+        if result.success?
+          render :show, status: :created
         else
           render json: { errors: result.errors }, status: :unprocessable_entity
         end
