@@ -1,15 +1,16 @@
 require "rails_helper"
 
-RSpec.describe RecognizeUser::AuthenticateByJwt do
+RSpec.describe RecognizeUser do
   subject(:context) { described_class.call(token: jwt) }
 
   let(:fake_codec) { instance_double(JwtCodec) }
   let(:jwt) { "123.456.789" }
-  let(:user_attributes) { { id: 1, email: "user@example.com" } }
+  let(:user) { create(:user) }
+  let(:user_attributes) { user.slice("id") }
 
   before do
     allow(JwtCodec).to receive(:new).and_return(fake_codec)
-    allow(fake_codec).to receive(:decode).with(jwt).and_return(user_attributes)
+    allow(fake_codec).to receive(:decode).and_return(user_attributes)
   end
 
   it { is_expected.to be_a_success }
@@ -20,7 +21,7 @@ RSpec.describe RecognizeUser::AuthenticateByJwt do
 
   context "with invalid token" do
     before do
-      allow(fake_codec).to receive(:decode).with(jwt).and_return(nil)
+      allow(fake_codec).to receive(:decode).and_return(nil)
     end
 
     it "fails" do

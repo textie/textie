@@ -5,17 +5,13 @@ class LoginUser
     delegate :user, to: :context
 
     def call
-      context.token = JwtCodec.new.encode(user_attributes)
+      context.token = JwtCodec.new.encode(payload)
     end
 
     private
 
-    def user_attributes
-      {
-        id: user.id,
-        email: user.email,
-        full_name: user.full_name
-      }
+    def payload
+      { id: user.id }
     end
   end
 end
