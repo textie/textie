@@ -10,7 +10,6 @@ RSpec.resource "Api::V1::Courses" do
     let!(:courses) { create_list(:course, 2) }
 
     example_request "returns all courses" do
-      courses
       expect(response_body).to match_json(
         courses: courses.map { |c| c.slice(*course_attributes) }
       )
@@ -30,15 +29,15 @@ RSpec.resource "Api::V1::Courses" do
 
   post "/api/v1/courses" do
     with_options scope: :course, with_example: true do
-      parameter :title
-      parameter :description
+      parameter :title, required: true
+      parameter :description, required: true
     end
 
     let(:course_params) { attributes_for(:course) }
     let(:raw_post) { { course: course_params }.to_json }
 
     example "creating course" do
-      do_request({ course: course_params })
+      do_request(course: course_params)
 
       expect(response_body).to match_json(
         course: course_params.merge(

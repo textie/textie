@@ -1,11 +1,14 @@
 require "rails_helper"
+require "rspec_api_documentation/dsl"
 
-RSpec.describe "Api::V1::Users", type: :request do
+RSpec.resource "Api::V1::Users" do
   include_context "with API request"
 
-  describe "POST /api/v1/users" do
-    let(:do_request) do
-      post api_v1_users_url, params: { user: user_attributes }
+  post "/api/v1/users" do
+    with_options scope: :user, with_example: true do
+      parameter :email, required: true
+      parameter :full_name
+      parameter :password, required: true
     end
 
     let(:user_attributes) { attributes_for(:user) }
@@ -17,12 +20,11 @@ RSpec.describe "Api::V1::Users", type: :request do
       }
     end
 
-    it "creates user" do
-      expect { do_request }.to change(User, :count).by(1)
-    end
-
-    it "returns created user attributes" do
-      expect(response_body).to match("user" => response_attributes)
+    example "creates user" do
+      expect { do_request(user: user_attributes) }.to(
+        change(User, :count).by(1)
+      )
+      expect(response_body).to match_json(user: response_attributes)
     end
 
     RSpec.shared_examples "error response" do |errors_hash|
@@ -32,15 +34,14 @@ RSpec.describe "Api::V1::Users", type: :request do
         end
       end
 
-      it "responds with errors" do
-        expect(response_body).to match("errors" => errors_matcher)
+      example_request "responds with errors" do
+        expect(response_body).to match_json(errors: errors_matcher)
       end
     end
 
     context "when email already taken" do
-      let(:user_attributes) do
-        attributes_for(:user, email: "taken@email.com")
-      end
+      let(:email) { "taken@email.com" }
+      let(:password) { "123456" }
 
       before { create(:user, email: "taken@email.com") }
 
@@ -48,13 +49,15 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
 
     context "when no email provided or invalid email" do
-      let(:user_attributes) { attributes_for(:user, email: "") }
+      let(:email) { "" }
+      let(:password) { "123456" }
 
       it_behaves_like "error response", "email" => %w[blank invalid]
     end
 
     context "when no password provided" do
-      let(:user_attributes) { attributes_for(:user, password: "") }
+      let(:email) { "linus.torvalds@gmail.com" }
+      let(:password) { "" }
 
       it_behaves_like "error response", "password" => ["blank"]
     end
