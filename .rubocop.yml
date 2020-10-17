@@ -174,3 +174,11 @@ Rails/ShortI18n:
 
 Rails/WhereExists:
   Enabled: true
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - spec/acceptance/**/*.rb
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/acceptance/**/*.rb

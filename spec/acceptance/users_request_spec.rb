@@ -21,22 +21,9 @@ RSpec.resource "Api::V1::Users" do
     end
 
     example "creates user" do
-      expect { do_request(user: user_attributes) }.to(
-        change(User, :count).by(1)
-      )
+      expect { do_request(user: user_attributes) }
+        .to change(User, :count).by(1)
       expect(response_body).to match_json(user: response_attributes)
-    end
-
-    RSpec.shared_examples "error response" do |errors_hash|
-      let(:errors_matcher) do
-        errors_hash.transform_values do |errors|
-          errors.map { |e| include(e) }
-        end
-      end
-
-      example_request "responds with errors" do
-        expect(response_body).to match_json(errors: errors_matcher)
-      end
     end
 
     context "when email already taken" do
