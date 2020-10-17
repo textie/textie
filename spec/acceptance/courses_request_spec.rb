@@ -36,9 +36,7 @@ RSpec.resource "Api::V1::Courses" do
     let(:course_params) { attributes_for(:course) }
     let(:raw_post) { { course: course_params }.to_json }
 
-    example "creating course" do
-      do_request(course: course_params)
-
+    example_request "creating course" do
       expect(response_body).to match_json(
         course: course_params.merge(
           id: be_an(Integer),
@@ -50,8 +48,21 @@ RSpec.resource "Api::V1::Courses" do
   end
 
   put "/api/v1/courses/:id" do
-  end
+    with_options scope: :course, with_example: true do
+      parameter :title
+      parameter :description
+    end
 
-  delete "/api/v1/courses/:id" do
+    let(:id) { course.id }
+    let(:course) { create(:course) }
+    let(:title) { "updated course" }
+    let(:description) { "updated course description" }
+    let(:course_params) { { title: title, description: description } }
+    let(:raw_post) { { course: course_params }.to_json }
+
+    example_request "updating course title and description" do
+      expected_response = course.slice(*course_attributes).merge(course_params)
+      expect(response_body).to match_json(course: expected_response)
+    end
   end
 end

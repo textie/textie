@@ -24,7 +24,7 @@ module Api
 
       def update
         if course.update(course_params)
-          render :show, status: :ok, location: course
+          render :show, status: :ok
         else
           render json: { errors: course.errors }, status: :unprocessable_entity
         end
