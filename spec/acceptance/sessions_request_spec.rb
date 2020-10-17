@@ -1,26 +1,31 @@
 require "rails_helper"
+require "rspec_api_documentation/dsl"
 
-RSpec.describe "Api::V1::Sessions", type: :request do
-  include_context "with API request"
+RSpec.resource "Api::V1::Sessions" do
+  header "Content-Type", "application/json"
 
-  describe "POST /api/v1/sessions" do
-    let(:credentials) { { email: "email@sessions.spec", password: "123456" } }
-    let(:headers) { { "Content-Type" => "application/json" } }
-    let(:do_request) do
-      post "/api/v1/sessions", params: credentials.to_json, headers: headers
+  post "/api/v1/sessions" do
+    with_options with_example: true do
+      parameter :email, required: true
+      parameter :password, required: true
     end
+
+    let(:email) { "email@sessions.spec" }
+    let(:password) { "123456" }
+    let(:credentials) { { email: email, password: password } }
+    let(:raw_post) {  credentials.to_json }
 
     before { create(:user, credentials) }
 
-    it "responds with token" do
-      expect(response_body).to match("token" => match(/^eyJ.+\..+\..+$/))
+    example_request "responds with token" do
+      expect(response_body).to match_json("token" => match(/^eyJ.+\..+\..+$/))
     end
 
     context "with invalid credentials" do
       let(:credentials) { {} }
 
-      it "responds with error" do
-        expect(response_body).to match("error" => include("Invalid credentials"))
+      example_request "responds with error" do
+        expect(response_body).to match_json("error" => include("Invalid credentials"))
       end
     end
   end
