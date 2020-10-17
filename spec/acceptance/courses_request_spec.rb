@@ -1,7 +1,7 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "Api::V1::Courses" do
+RSpec.resource "/courses" do
   include_context "with authorized API request"
 
   course_attributes = %w[id title description author_id created_at]

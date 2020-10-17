@@ -1,6 +1,6 @@
 RSpec.shared_context "with API request" do
-  let(:response_body) do
-    do_request
-    JSON.parse(response.body)
+  before do
+    header "Content-Type", "application/json"
+    header "Accept", "application/json"
   end
 end

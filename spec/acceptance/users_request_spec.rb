@@ -1,7 +1,7 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "Api::V1::Users" do
+RSpec.resource "/users" do
   include_context "with API request"
 
   post "/api/v1/users" do
@@ -11,19 +11,24 @@ RSpec.resource "Api::V1::Users" do
       parameter :password, required: true
     end
 
-    let(:user_attributes) { attributes_for(:user) }
-    let(:response_attributes) do
-      {
-        "id" => be_instance_of(Integer),
-        "fullName" => user_attributes[:full_name],
-        "email" => user_attributes[:email]
-      }
-    end
+    let(:user_attributes) { { email: email, password: password } }
+    let(:raw_post) { { user: user_attributes }.to_json }
 
-    example "creates user" do
-      expect { do_request(user: user_attributes) }
-        .to change(User, :count).by(1)
-      expect(response_body).to match_json(user: response_attributes)
+    context "with valid attributes" do
+      let(:user_attributes) { attributes_for(:user) }
+      let(:response_attributes) do
+        {
+          "id" => be_instance_of(Integer),
+          "fullName" => user_attributes[:full_name],
+          "email" => user_attributes[:email]
+        }
+      end
+      let(:raw_post) { { user: user_attributes }.to_json }
+
+      example "creates user" do
+        expect { do_request }.to change(User, :count).by(1)
+        expect(response_body).to match_json(user: response_attributes)
+      end
     end
 
     context "when email already taken" do

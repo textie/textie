@@ -16,6 +16,7 @@ gem "decent_exposure", "~> 3.0.0"
 gem "interactor"
 gem "jbuilder", "~> 2.7"
 gem "jwt"
+gem "raddocs"
 
 group :development, :test do
   gem "brakeman", require: false
@@ -25,6 +26,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
+  gem "rspec_api_documentation"
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
@@ -36,7 +38,6 @@ group :test do
   gem "database_cleaner-active_record"
   gem "guard-rspec"
   gem "launchy"
-  gem "rspec_api_documentation"
   gem "rspec-its"
   gem "shoulda-matchers"
 end

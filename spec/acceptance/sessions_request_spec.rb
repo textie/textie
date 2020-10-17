@@ -1,7 +1,7 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "Api::V1::Sessions" do
+RSpec.resource "/sessions" do
   header "Content-Type", "application/json"
 
   post "/api/v1/sessions" do
