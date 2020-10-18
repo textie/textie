@@ -1,0 +1,64 @@
+{
+  "resource": "/courses",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/courses",
+  "description": "creating course",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "course",
+      "with_example": true,
+      "required": true,
+      "name": "title",
+      "description": "Course title"
+    },
+    {
+      "scope": "course",
+      "with_example": true,
+      "required": true,
+      "name": "description",
+      "description": "Course description"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/courses",
+      "request_body": "{\"course\":{\"title\":\"Engineering 135\",\"description\":\"Ea natus aut. Doloremque aut est. Commodi omnis incidunt.\"}}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTAyNywiZW1haWwiOiJ1c2VyXzNAZXhhbXBsZS5jb20iLCJmdWxsX25hbWUiOiJEYXJyeWwgQm9zY28ifQ.k6gy-1Ix3IO09y1ll9DMchHnlRtmT532R5oxEpZgLOY",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\n  \"course\": {\n    \"id\": 237,\n    \"title\": \"Engineering 135\",\n    \"description\": \"Ea natus aut. Doloremque aut est. Commodi omnis incidunt.\",\n    \"author_id\": 1027,\n    \"created_at\": \"2020-10-18T12:08:27.584Z\"\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"f0f3d0059a484d016dfbba06b8b115b9\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "c946e14c-e4c1-42f3-8445-a7baac27ec36",
+        "X-Runtime": "0.043406",
+        "Vary": "Origin",
+        "Content-Length": "178"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/api/v1/courses\" -d '{\"course\":{\"title\":\"Engineering 135\",\"description\":\"Ea natus aut. Doloremque aut est. Commodi omnis incidunt.\"}}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTAyNywiZW1haWwiOiJ1c2VyXzNAZXhhbXBsZS5jb20iLCJmdWxsX25hbWUiOiJEYXJyeWwgQm9zY28ifQ.k6gy-1Ix3IO09y1ll9DMchHnlRtmT532R5oxEpZgLOY\""
+    }
+  ]
+}

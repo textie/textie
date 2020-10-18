@@ -1,0 +1,112 @@
+{
+  "resources": [
+    {
+      "name": "/courses",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "creating course",
+          "link": "courses/creating_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "post"
+        },
+        {
+          "description": "returns all courses",
+          "link": "courses/returns_all_courses.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "get"
+        },
+        {
+          "description": "returns one course",
+          "link": "courses/returns_one_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:id",
+          "method": "get"
+        },
+        {
+          "description": "updating course title and description",
+          "link": "courses/updating_course_title_and_description.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:id",
+          "method": "put"
+        }
+      ]
+    },
+    {
+      "name": "/profiles",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "response with unauthorized status",
+          "link": "profiles/response_with_unauthorized_status.json",
+          "groups": "all",
+          "route": "/api/v1/profile",
+          "method": "get"
+        },
+        {
+          "description": "returns current user's profile",
+          "link": "profiles/returns_current_user's_profile.json",
+          "groups": "all",
+          "route": "/api/v1/profile",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "/sessions",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "responds with error",
+          "link": "sessions/responds_with_error.json",
+          "groups": "all",
+          "route": "/api/v1/sessions",
+          "method": "post"
+        },
+        {
+          "description": "responds with token",
+          "link": "sessions/responds_with_token.json",
+          "groups": "all",
+          "route": "/api/v1/sessions",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "/users",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "creates user",
+          "link": "users/creates_user.json",
+          "groups": "all",
+          "route": "/api/v1/users",
+          "method": "post"
+        },
+        {
+          "description": "responds with errors",
+          "link": "users/responds_with_errors.json",
+          "groups": "all",
+          "route": "/api/v1/users",
+          "method": "post"
+        },
+        {
+          "description": "responds with errors",
+          "link": "users/responds_with_errors.json",
+          "groups": "all",
+          "route": "/api/v1/users",
+          "method": "post"
+        },
+        {
+          "description": "responds with errors",
+          "link": "users/responds_with_errors.json",
+          "groups": "all",
+          "route": "/api/v1/users",
+          "method": "post"
+        }
+      ]
+    }
+  ]
+}
