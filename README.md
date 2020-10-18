@@ -19,4 +19,5 @@ This is my personal development project.
 ```
 
 * API documentation
-Available at [/api/v1/docs](localhost:3000/api/v1/docs).
+Generate docs running `bin/doc`.
+Docs are available at [/api/v1/docs](localhost:3000/api/v1/docs).
