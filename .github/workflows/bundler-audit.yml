@@ -1,0 +1,18 @@
+name: Ruby Gem
+
+on: [push]
+
+jobs:
+  build:
+    name: Bundle 
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.7'
+
+    - name: Bundler Audit Action
+      uses: andrewmcodes/bundler-audit-action@v0.1.0
