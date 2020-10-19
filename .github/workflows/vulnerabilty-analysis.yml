@@ -1,11 +1,12 @@
-name: Brakeman Scan
+name: Vulnerability Scan
 
 on: [push]
 
 jobs:
-  brakeman-scan:
-    name: Brakeman Scan
+  vulnerabilty-scan:
+    name: Vulnerability Scan
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -14,6 +15,9 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: '2.7'
+
+    - name: Bundler Audit Action
+      uses: andrewmcodes/bundler-audit-action@v0.1.0
 
     - name: Setup Brakeman
       env:
