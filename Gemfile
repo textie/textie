@@ -3,18 +3,19 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.1"
 
-gem "rails", "~> 6.0.3", ">= 6.0.3.2"
+gem "pg"
+gem "rails"
 
 gem "bootsnap", ">= 1.4.2", require: false
 gem "puma", "~> 4.1"
-# gem 'rack-cors'
+gem "rack-cors"
 
-gem "pg", ">= 0.18", "< 2.0"
-# gem 'image_processing', '~> 1.2'
-
+# gem "image_processing", "~> 1.2"
 gem "bcrypt", "~> 3.1.7"
 gem "decent_exposure", "~> 3.0.0"
+gem "interactor"
 gem "jbuilder", "~> 2.7"
+gem "jwt"
 
 group :development, :test do
   gem "brakeman", require: false

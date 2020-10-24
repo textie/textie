@@ -113,8 +113,10 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    interactor (3.1.2)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    jwt (2.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
     letter_opener (1.7.0)
@@ -154,6 +156,8 @@ GEM
     puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.3.4)
@@ -281,13 +285,16 @@ DEPENDENCIES
   factory_bot_rails
   ffaker
   guard-rspec
+  interactor
   jbuilder (~> 2.7)
+  jwt
   launchy
   letter_opener
   listen (~> 3.2)
-  pg (>= 0.18, < 2.0)
+  pg
   puma (~> 4.1)
-  rails (~> 6.0.3, >= 6.0.3.2)
+  rack-cors
+  rails
   rails-erd
   rspec-its
   rspec-rails
