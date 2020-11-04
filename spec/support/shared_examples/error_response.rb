@@ -20,7 +20,7 @@ RSpec.shared_examples "error response" do |errors_hash|
   end
 
   example_request "responds with errors" do
-    expect(response_body).to match_json(errors: errors_matcher)
+    expect(response).to include(errors: errors_matcher)
   end
 end
 # rubocop:enable RSpec/SharedContext

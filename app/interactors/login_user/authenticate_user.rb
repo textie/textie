@@ -12,7 +12,7 @@ class LoginUser
     private
 
     def fail!
-      context.fail!(error: I18n.t("authenticate_user.failure"))
+      context.fail!(error: I18n.t("authenticate.failure"))
     end
   end
 end

@@ -1,6 +1,5 @@
 RSpec.shared_context "with API request" do
-  let(:response_body) do
-    do_request
-    JSON.parse(response.body)
+  let(:response) do
+    JSON.parse(response_body).with_indifferent_access
   end
 end

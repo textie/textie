@@ -7,23 +7,24 @@ RSpec.resource "Api::V1::Users" do
   post "/api/v1/users" do
     with_options scope: :user, with_example: true do
       parameter :email, required: true
-      parameter :full_name
+      parameter :full_name, required: true
       parameter :password, required: true
     end
 
-    let(:user_attributes) { attributes_for(:user) }
+    let(:email) { "john.smith@example.spec" }
+    let(:full_name) { "John Smith" }
+    let(:password) { "123456" }
+
     let(:response_attributes) do
       {
         "id" => be_instance_of(Integer),
-        "fullName" => user_attributes[:full_name],
-        "email" => user_attributes[:email]
+        "fullName" => "John Smith",
+        "email" => "john.smith@example.spec"
       }
     end
 
-    example "creates user" do
-      expect { do_request(user: user_attributes) }
-        .to change(User, :count).by(1)
-      expect(response_body).to match_json(user: response_attributes)
+    example_request "creates user" do
+      expect(response).to include(user: response_attributes)
     end
 
     context "when email already taken" do

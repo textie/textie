@@ -4,10 +4,9 @@ module Api
       class EnrollmentsController < ApplicationController
         expose :course
         expose :enrollment, parent: :course
-        expose :enrollments, from: :current_user
+        expose :enrollments, fetch: :fetch_enrollments
 
         def index
-          enrollments.includes(:course)
         end
 
         def show
@@ -37,6 +36,10 @@ module Api
 
         def enrollment_params
           params.fetch(:enrollment)
+        end
+
+        def fetch_enrollments
+          current_user.enrollments.joins(:course)
         end
       end
     end
