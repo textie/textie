@@ -1,4 +1,4 @@
-class JwtCodec
+class JwtService
   ALGORITHM = "HS256".freeze
 
   def initialize(secret = ENV.fetch("JWT_SECRET"))

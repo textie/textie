@@ -3,13 +3,13 @@ require "rails_helper"
 RSpec.describe RecognizeUser do
   subject(:context) { described_class.call(token: jwt) }
 
-  let(:fake_codec) { instance_double(JwtCodec) }
+  let(:fake_codec) { instance_double(JwtService) }
   let(:jwt) { "123.456.789" }
   let(:user) { create(:user) }
   let(:user_attributes) { user.slice("id") }
 
   before do
-    allow(JwtCodec).to receive(:new).and_return(fake_codec)
+    allow(JwtService).to receive(:new).and_return(fake_codec)
     allow(fake_codec).to receive(:decode).and_return(user_attributes)
   end
 
