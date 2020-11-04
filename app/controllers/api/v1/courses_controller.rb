@@ -2,7 +2,7 @@ module Api
   module V1
     class CoursesController < ApplicationController
       expose :courses, -> { Course.all }
-      expose :course
+      expose :course, from: :current_user
 
       def index
       end
@@ -11,7 +11,7 @@ module Api
       end
 
       def create
-        result = CreateCourse.call(user: current_user, course: course)
+        result = CreateCourse.call(course: course)
 
         if result.success
           render :show, status: :created, location: result.course
