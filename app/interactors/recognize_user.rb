@@ -1,5 +1,17 @@
 class RecognizeUser
-  include Interactor::Organizer
+  include Interactor
 
-  organize RecognizeUser::AuthenticateByJwt
+  delegate :token, to: :context
+
+  def call
+    payload = JwtCodec.new.decode(token)
+    fail! unless payload
+    context.user = User.find(payload["id"])
+  end
+
+  private
+
+  def fail!
+    context.fail!(error: I18n.t("authenticate.invalid_token"))
+  end
 end
