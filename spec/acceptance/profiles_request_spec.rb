@@ -5,13 +5,13 @@ RSpec.resource "Api::V1::Profiles" do
   include_context "with API request"
 
   get "/api/v1/profile" do
-    let(:user) { create(:user) }
+    let(:user) { create :user, full_name: "John Smith", email: "john.smith@example.com" }
     let(:jwt) { LoginUser::GenerateJwt.call(user: user).token }
     let(:user_attributes) do
       {
         "id" => user.id,
-        "email" => user.email,
-        "fullName" => user.full_name
+        "email" => "john.smith@example.com",
+        "fullName" => "John Smith"
       }
     end
 
