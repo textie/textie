@@ -2,17 +2,21 @@ require "rails_helper"
 
 RSpec.describe "Api::V1::Courses", type: :request do
   include_context "with authorized API request"
-  include_context :when_time_is_frozen
+  include_context "when time is frozen"
 
   let(:author) { create :user }
   let!(:first_course) do
-    create(:course, users: [current_user], title: "The best footbal player",
-      description: "Lionel Messi", author: author)
+    create(
+      :course, users: [current_user], author: author,
+               title: "The best footbal player", description: "Lionel Messi"
+    )
   end
   let!(:second_course) do
-    create(:course, users: [current_user], author: author,
-      title: "The most popular programming languages",
-      description: "C is the most popular programming language.")
+    create(
+      :course, users: [current_user], author: author,
+               title: "The most popular programming languages",
+               description: "C is the most popular programming language."
+    )
   end
 
   describe "GET /api/v1/courses" do
