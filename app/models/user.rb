@@ -6,6 +6,4 @@ class User < ApplicationRecord
 
   has_many :enrollments, dependent: :destroy
   has_many :courses, through: :enrollments
-  has_many :authored_courses, class_name: "Course", foreign_key: :author_id,
-                              dependent: :restrict_with_error, inverse_of: :author
 end
