@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resource :profile, only: %i[show]
 
       resources :courses, only: %i[index show create update] do
-        resource :enrollments
+        resource :enrollments, module: :courses
       end
     end
   end
