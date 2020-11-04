@@ -13,23 +13,21 @@ module Api
         end
 
         def create
-          if enrollment.save
-            render :show, status: :created, location: enrollment
-          else
-            render json: { errors: enrollment.errors }, status: :unprocessable_entity
-          end
+          enrollment.save
+
+          respond_with enrollment
         end
 
         def update
-          if enrollment.update(enrollment_params)
-            render :show, status: :ok, location: enrollment
-          else
-            render json: { errors: enrollment.errors }, status: :unprocessable_entity
-          end
+          enrollment.update(enrollment_params)
+
+          respond_with enrollment
         end
 
         def destroy
-          @enrollment.destroy
+          enrollment.destroy
+
+          respond_with enrollment
         end
 
         private
