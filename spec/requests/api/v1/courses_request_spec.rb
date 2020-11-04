@@ -2,26 +2,45 @@ require "rails_helper"
 
 RSpec.describe "Api::V1::Courses", type: :request do
   include_context "with authorized API request"
+  include_context :when_time_is_frozen
 
-  def create_course(user)
-    create(:course) do |course|
-      course.enrollments.create(user: user)
-    end
+  let(:author) { create :user }
+  let!(:first_course) do
+    create(:course, users: [current_user], title: "The best footbal player",
+      description: "Lionel Messi", author: author)
+  end
+  let!(:second_course) do
+    create(:course, users: [current_user], author: author,
+      title: "The most popular programming languages",
+      description: "C is the most popular programming language.")
   end
 
   describe "GET /api/v1/courses" do
     let(:do_request) { get "/api/v1/courses", headers: auth_header }
 
-    let(:courses) do
-      [
-        create_course(current_user),
-        create_course(current_user)
-      ]
+    let(:expected_response) do
+      {
+        courses: [
+          {
+            id: first_course.id,
+            title: "The best footbal player",
+            description: "Lionel Messi",
+            author_id: author.id,
+            created_at: Time.current.utc.to_s
+          },
+          {
+            id: second_course.id,
+            title: "The most popular programming languages",
+            description: "C is the most popular programming language.",
+            author_id: author.id,
+            created_at: Time.current.utc.to_s
+          }
+        ]
+      }.deep_stringify_keys
     end
 
     it "returns all courses" do
-      courses
-      expect(response_body).to match("courses" => courses)
+      expect(response_body).to match(expected_response)
     end
   end
 

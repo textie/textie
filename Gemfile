@@ -38,6 +38,7 @@ group :test do
   gem "launchy"
   gem "rspec-its"
   gem "shoulda-matchers"
+  gem "timecop"
 end
 
 group :development do
