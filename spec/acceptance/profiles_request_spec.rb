@@ -1,7 +1,7 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "Api::V1::Profiles" do
+RSpec.resource "Profiles" do
   include_context "with API request"
 
   get "/api/v1/profile" do
@@ -18,7 +18,7 @@ RSpec.resource "Api::V1::Profiles" do
     context "with valid authentication" do
       before { header "Authorization", "JWT #{jwt}" }
 
-      example_request "returns current user's profile" do
+      example_request "Get current user's info" do
         expect(response).to include(user: user_attributes)
       end
     end
@@ -26,7 +26,7 @@ RSpec.resource "Api::V1::Profiles" do
     context "with invalid authentication" do
       header "Authorization", "xyz"
 
-      example_request "response with unauthorized status" do
+      example_request "Get rejected with invalid authentication" do
         expect(status).to eq(401)
       end
     end

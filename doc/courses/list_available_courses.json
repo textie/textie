@@ -1,0 +1,38 @@
+{
+  "resource": "Courses",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/api/v1/courses",
+  "description": "List available courses",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/courses",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjIwM30.sAcRoy0WJ0C3PcYvcjq8aCo1Al7K1H8KNqehu6N3fko"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"courses\": [\n    {\n      \"id\": 1159,\n      \"title\": \"The best footbal player\",\n      \"description\": \"Lionel Messi\",\n      \"author_id\": 2204,\n      \"created_at\": \"2020-11-05 21:34:05 UTC\"\n    },\n    {\n      \"id\": 1160,\n      \"title\": \"The most popular programming languages\",\n      \"description\": \"C is the most popular programming language.\",\n      \"author_id\": 2205,\n      \"created_at\": \"2020-11-05 21:34:05 UTC\"\n    }\n  ]\n}",
+      "response_headers": {
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://lvh.me:3000/api/v1/courses\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjIwM30.sAcRoy0WJ0C3PcYvcjq8aCo1Al7K1H8KNqehu6N3fko\""
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "/courses" do
+RSpec.resource "Courses" do
   include_context "with authorized API request"
   include_context "when time is frozen"
 
@@ -44,7 +44,7 @@ RSpec.resource "/courses" do
       }.deep_stringify_keys
     end
 
-    example_request "returns all courses" do
+    example_request "List available courses" do
       expect(response).to include(expected_response)
     end
   end
@@ -58,7 +58,7 @@ RSpec.resource "/courses" do
       )
     end
 
-    example_request "returns one course" do
+    example_request "Get detailed info on specific course" do
       expect(response).to include(
         course: {
           id: course.id,
@@ -80,7 +80,7 @@ RSpec.resource "/courses" do
     let(:title) { "Course creating 101" }
     let(:description) { "API testing course" }
 
-    example_request "creating course" do
+    example_request "Create a course" do
       expect(response).to include(
         course: {
           id: be_an(Integer),
@@ -98,14 +98,14 @@ RSpec.resource "/courses" do
     let(:course) { create(:course, author: current_user) }
 
     with_options scope: :course, with_example: true do
-      parameter :title
-      parameter :description
+      parameter :title, required: true
+      parameter :description, required: true
     end
 
     let(:title) { "Updating courses guide" }
     let(:description) { "Updating course titles and descriptions" }
 
-    example_request "updating course title and description" do
+    example_request "Update a course" do
       expect(response).to include(
         course: {
           id: course.id,

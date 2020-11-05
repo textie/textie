@@ -1,0 +1,50 @@
+{
+  "resource": "Sessions",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/sessions",
+  "description": "Create a session/sign in/log in",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "session",
+      "with_example": true,
+      "required": true,
+      "name": "email",
+      "description": "Session email"
+    },
+    {
+      "scope": "session",
+      "with_example": true,
+      "required": true,
+      "name": "password",
+      "description": "Session password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/sessions",
+      "request_body": "{\"session\":{\"email\":\"email@sessions.spec\",\"password\":\"123456\"}}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjIxNn0.WMVJJ4nxhRAbXicNlQnQWwwNiNK_MsmO0wDneHqC4e0\"\n}",
+      "response_headers": {
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://lvh.me:3000/api/v1/sessions\" -d '{\"session\":{\"email\":\"email@sessions.spec\",\"password\":\"123456\"}}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\""
+    }
+  ]
+}

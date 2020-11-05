@@ -1,7 +1,7 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "/users" do
+RSpec.resource "Users" do
   include_context "with API request"
 
   post "/api/v1/users" do
@@ -23,7 +23,7 @@ RSpec.resource "/users" do
       }
     end
 
-    example_request "creates user" do
+    example_request "Register/sign up" do
       expect(response).to include(user: response_attributes)
     end
 

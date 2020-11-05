@@ -1,33 +1,33 @@
 {
   "resources": [
     {
-      "name": "/courses",
+      "name": "Courses",
       "explanation": null,
       "examples": [
         {
-          "description": "creating course",
-          "link": "courses/creating_course.json",
+          "description": "Create a course",
+          "link": "courses/create_a_course.json",
           "groups": "all",
           "route": "/api/v1/courses",
           "method": "post"
         },
         {
-          "description": "returns all courses",
-          "link": "courses/returns_all_courses.json",
-          "groups": "all",
-          "route": "/api/v1/courses",
-          "method": "get"
-        },
-        {
-          "description": "returns one course",
-          "link": "courses/returns_one_course.json",
+          "description": "Get detailed info on specific course",
+          "link": "courses/get_detailed_info_on_specific_course.json",
           "groups": "all",
           "route": "/api/v1/courses/:id",
           "method": "get"
         },
         {
-          "description": "updating course title and description",
-          "link": "courses/updating_course_title_and_description.json",
+          "description": "List available courses",
+          "link": "courses/list_available_courses.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "get"
+        },
+        {
+          "description": "Update a course",
+          "link": "courses/update_a_course.json",
           "groups": "all",
           "route": "/api/v1/courses/:id",
           "method": "put"
@@ -35,19 +35,67 @@
       ]
     },
     {
-      "name": "/profiles",
+      "name": "Courses/Enrollments",
       "explanation": null,
       "examples": [
         {
-          "description": "response with unauthorized status",
-          "link": "profiles/response_with_unauthorized_status.json",
+          "description": "Enroll for a course",
+          "link": "courses/enrollments/enroll_for_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "post"
+        },
+        {
+          "description": "Get error accessing not existing unenrollment",
+          "link": "courses/enrollments/get_error_accessing_not_existing_unenrollment.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "get"
+        },
+        {
+          "description": "Get rejected when enrolling for enrolled course",
+          "link": "courses/enrollments/get_rejected_when_enrolling_for_enrolled_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "post"
+        },
+        {
+          "description": "Leave/unenroll a course",
+          "link": "courses/enrollments/leaveunenroll_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "delete"
+        },
+        {
+          "description": "Leave/unenroll unenrolled course",
+          "link": "courses/enrollments/leaveunenroll_unenrolled_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "delete"
+        },
+        {
+          "description": "See enrollment details if already enrolled",
+          "link": "courses/enrollments/see_enrollment_details_if_already_enrolled.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Profiles",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get current user's info",
+          "link": "profiles/get_current_user's_info.json",
           "groups": "all",
           "route": "/api/v1/profile",
           "method": "get"
         },
         {
-          "description": "returns current user's profile",
-          "link": "profiles/returns_current_user's_profile.json",
+          "description": "Get rejected with invalid authentication",
+          "link": "profiles/get_rejected_with_invalid_authentication.json",
           "groups": "all",
           "route": "/api/v1/profile",
           "method": "get"
@@ -55,19 +103,19 @@
       ]
     },
     {
-      "name": "/sessions",
+      "name": "Sessions",
       "explanation": null,
       "examples": [
         {
-          "description": "responds with error",
-          "link": "sessions/responds_with_error.json",
+          "description": "Create a session/sign in/log in",
+          "link": "sessions/create_a_sessionsign_inlog_in.json",
           "groups": "all",
           "route": "/api/v1/sessions",
           "method": "post"
         },
         {
-          "description": "responds with token",
-          "link": "sessions/responds_with_token.json",
+          "description": "Get rejected with invalid credentials",
+          "link": "sessions/get_rejected_with_invalid_credentials.json",
           "groups": "all",
           "route": "/api/v1/sessions",
           "method": "post"
@@ -75,33 +123,12 @@
       ]
     },
     {
-      "name": "/users",
+      "name": "Users",
       "explanation": null,
       "examples": [
         {
-          "description": "creates user",
-          "link": "users/creates_user.json",
-          "groups": "all",
-          "route": "/api/v1/users",
-          "method": "post"
-        },
-        {
-          "description": "responds with errors",
-          "link": "users/responds_with_errors.json",
-          "groups": "all",
-          "route": "/api/v1/users",
-          "method": "post"
-        },
-        {
-          "description": "responds with errors",
-          "link": "users/responds_with_errors.json",
-          "groups": "all",
-          "route": "/api/v1/users",
-          "method": "post"
-        },
-        {
-          "description": "responds with errors",
-          "link": "users/responds_with_errors.json",
+          "description": "Register/sign up",
+          "link": "users/registersign_up.json",
           "groups": "all",
           "route": "/api/v1/users",
           "method": "post"
