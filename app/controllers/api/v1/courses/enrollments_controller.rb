@@ -34,7 +34,6 @@ module Api
 
         def enrollment_params
           { course: course, user: current_user }
-          # params.fetch(:enrollment).permit(:user_id)
         end
       end
     end
