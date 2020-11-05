@@ -13,10 +13,12 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
 
       example_request "shows enrollment object" do
         expect(status).to eq(200)
-        expect(response).to include(enrollment: {
-          course_id: course.id,
-          user_id: current_user.id
-        })
+        expect(response).to include(
+          enrollment: {
+            course_id: course.id,
+            user_id: current_user.id
+          }
+        )
       end
     end
 
@@ -32,10 +34,12 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
     context "when user hasn't enrolled for the course" do
       example_request "enrolls this course" do
         expect(status).to eq(201)
-        expect(response).to include(enrollment: {
-          course_id: course.id,
-          user_id: current_user.id
-        })
+        expect(response).to include(
+          enrollment: {
+            course_id: course.id,
+            user_id: current_user.id
+          }
+        )
       end
     end
 
@@ -44,9 +48,11 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
 
       example_request "reponds with error" do
         expect(status).to eq(422)
-        expect(response).to include(errors: {
-          course_id: [include("taken")]
-        })
+        expect(response).to include(
+          errors: {
+            course_id: [include("taken")]
+          }
+        )
       end
     end
   end

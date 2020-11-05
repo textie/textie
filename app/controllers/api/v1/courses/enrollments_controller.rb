@@ -17,7 +17,7 @@ module Api
 
         def create
           if new_enrollment.save
-            render :show, locals: { enrollment: new_enrollment } , status: :created
+            render :show, locals: { enrollment: new_enrollment }, status: :created
           else
             render json: { errors: new_enrollment.errors }, status: :unprocessable_entity
           end
