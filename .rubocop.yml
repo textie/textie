@@ -22,6 +22,9 @@ Layout/ExtraSpacing:
   Exclude:
     - config/**/*
 
+Layout/LineLength:
+  Max: 100
+
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 

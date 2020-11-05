@@ -13,7 +13,7 @@ module Api
       end
 
       def create
-        result = CreateCourse.call(user: current_user, course: course)
+        result = CreateCourse.call(course: course)
 
         if result.success?
           render :show, status: :created
@@ -33,7 +33,9 @@ module Api
       private
 
       def course_params
-        params.require(:course).permit(:id, :title, :description)
+        params.require(:course).permit(
+          :id, :title, :description
+        ).merge(author: current_user)
       end
     end
   end

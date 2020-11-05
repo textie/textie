@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2020_08_14_142059) do
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
     t.index ["course_id"], name: "index_enrollments_on_course_id"
-    t.index ["user_id"], name: "index_enrollments_on_user_id"
+    t.index ["user_id", "course_id"], name: "index_enrollments_on_user_id_and_course_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
     t.citext "email", null: false
-    t.string "full_name", default: "", null: false
-    t.string "password_digest"
+    t.string "full_name", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

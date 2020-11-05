@@ -3,40 +3,37 @@ module Api
     module Courses
       class EnrollmentsController < ApplicationController
         expose :course
-        expose :enrollment, parent: :course
-        expose :enrollments, from: :current_user
-
-        def index
-          enrollments.includes(:course)
-        end
+        expose :enrollment, -> { Enrollment.find_by(enrollment_params) }
+        expose :new_enrollment, -> { Enrollment.new(enrollment_params) }
 
         def show
+          if enrollment.present?
+            render :show, status: :ok
+          else
+            # TODO: respond with error
+            render json: { errors: {} }, status: :not_found
+          end
         end
 
         def create
-          if enrollment.save
-            render :show, status: :created, location: enrollment
-          else
-            render json: { errors: enrollment.errors }, status: :unprocessable_entity
-          end
-        end
+          new_enrollment.save
 
-        def update
-          if enrollment.update(enrollment_params)
-            render :show, status: :ok, location: enrollment
-          else
-            render json: { errors: enrollment.errors }, status: :unprocessable_entity
-          end
+          respond_with new_enrollment
         end
 
         def destroy
-          @enrollment.destroy
+          if enrollment.present?
+            enrollment.destroy
+            head :ok
+          else
+            head :not_found
+          end
         end
 
         private
 
         def enrollment_params
-          params.fetch(:enrollment)
+          { course: course, user: current_user }
         end
       end
     end

@@ -1,3 +1,4 @@
 en:
-  authenticate_user:
+  authenticate:
     failure: "Invalid credentials"
+    invalid_token: "Invalid authentication token"

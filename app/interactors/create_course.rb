@@ -1,11 +1,9 @@
 class CreateCourse
   include Interactor
 
-  delegate :course, :user, to: :context
+  delegate :course, to: :context
 
   def call
-    course.author = user
-    context.fail!(errors: course.errors) unless course.valid?
-    course.save!
+    context.fail!(errors: course.errors) unless course.save
   end
 end

@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.1"
+ruby "~> 2.7.1"
 
-gem "pg"
-gem "rails"
+gem "pg", ">= 1.2.3", "< 2.0.0"
+gem "rails", "~> 6.0.3.4"
 
 gem "bootsnap", ">= 1.4.2", require: false
 gem "puma", "~> 4.1"
@@ -17,6 +17,7 @@ gem "interactor"
 gem "jbuilder", "~> 2.7"
 gem "jwt"
 gem "raddocs"
+gem "responders"
 
 group :development, :test do
   gem "brakeman", require: false
@@ -35,11 +36,11 @@ group :development, :test do
 end
 
 group :test do
-  gem "database_cleaner-active_record"
   gem "guard-rspec"
   gem "launchy"
   gem "rspec-its"
   gem "shoulda-matchers"
+  gem "timecop"
 end
 
 group :development do

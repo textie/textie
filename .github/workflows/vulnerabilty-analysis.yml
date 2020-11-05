@@ -1,0 +1,36 @@
+name: Vulnerability Scan
+
+on: [push]
+
+jobs:
+  vulnerabilty-scan:
+    name: Vulnerability Scan
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.7'
+
+    - name: Bundler Audit Action
+      uses: andrewmcodes/bundler-audit-action@v0.1.0
+
+    - name: Setup Brakeman
+      env:
+        BRAKEMAN_VERSION: '4.10' # SARIF support is provided in Brakeman version 4.10+
+      run: |
+        gem install brakeman --version $BRAKEMAN_VERSION
+
+    - name: Scan
+      continue-on-error: true
+      run: brakeman -f sarif -o output.sarif.json .
+
+    # Upload the SARIF file generated in the previous step
+    - name: Upload SARIF
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: output.sarif.json

@@ -3,26 +3,70 @@ require "rspec_api_documentation/dsl"
 
 RSpec.resource "/courses" do
   include_context "with authorized API request"
+  include_context "when time is frozen"
 
-  course_attributes = %w[id title description author_id created_at]
+  let!(:first_course) do
+    create(
+      :course, users: [current_user],
+               title: "The best footbal player",
+               description: "Lionel Messi"
+    )
+  end
+  let!(:second_course) do
+    create(
+      :course, users: [current_user],
+               title: "The most popular programming languages",
+               description: "C is the most popular programming language."
+    )
+  end
 
   get "/api/v1/courses" do
-    let!(:courses) { create_list(:course, 2) }
+    let(:expected_response) do
+      {
+        courses: match_array(
+          [
+            {
+              id: first_course.id,
+              title: "The best footbal player",
+              description: "Lionel Messi",
+              author_id: first_course.author_id,
+              created_at: current_time.to_s
+            },
+            {
+              id: second_course.id,
+              title: "The most popular programming languages",
+              description: "C is the most popular programming language.",
+              author_id: second_course.author_id,
+              created_at: current_time.to_s
+            }
+          ]
+        )
+      }.deep_stringify_keys
+    end
 
     example_request "returns all courses" do
-      expect(response_body).to match_json(
-        courses: courses.map { |c| c.slice(*course_attributes) }
-      )
+      expect(response).to include(expected_response)
     end
   end
 
   get "/api/v1/courses/:id" do
     let(:id) { course.id }
-    let(:course) { create(:course) }
+    let(:course) do
+      create(
+        :course, title: "CS 101",
+                 description: "Computer Science for beginners"
+      )
+    end
 
     example_request "returns one course" do
-      expect(response_body).to match_json(
-        course: course.slice(*course_attributes)
+      expect(response).to include(
+        course: {
+          id: course.id,
+          title: "CS 101",
+          description: "Computer Science for beginners",
+          author_id: course.author_id,
+          created_at: course.created_at.to_s
+        }
       )
     end
   end
@@ -33,36 +77,44 @@ RSpec.resource "/courses" do
       parameter :description, required: true
     end
 
-    let(:course_params) { attributes_for(:course) }
-    let(:raw_post) { { course: course_params }.to_json }
+    let(:title) { "Course creating 101" }
+    let(:description) { "API testing course" }
 
     example_request "creating course" do
-      expect(response_body).to match_json(
-        course: course_params.merge(
+      expect(response).to include(
+        course: {
           id: be_an(Integer),
-          created_at: be_a(String),
-          author_id: be_an(Integer)
-        )
+          title: "Course creating 101",
+          description: "API testing course",
+          author_id: be_an(Integer),
+          created_at: be_a(String)
+        }
       )
     end
   end
 
   put "/api/v1/courses/:id" do
+    let(:id) { course.id }
+    let(:course) { create(:course, author: current_user) }
+
     with_options scope: :course, with_example: true do
       parameter :title
       parameter :description
     end
 
-    let(:id) { course.id }
-    let(:course) { create(:course) }
-    let(:title) { "updated course" }
-    let(:description) { "updated course description" }
-    let(:course_params) { { title: title, description: description } }
-    let(:raw_post) { { course: course_params }.to_json }
+    let(:title) { "Updating courses guide" }
+    let(:description) { "Updating course titles and descriptions" }
 
     example_request "updating course title and description" do
-      expected_response = course.slice(*course_attributes).merge(course_params)
-      expect(response_body).to match_json(course: expected_response)
+      expect(response).to include(
+        course: {
+          id: course.id,
+          title: "Updating courses guide",
+          description: "Updating course titles and descriptions",
+          author_id: course.author_id,
+          created_at: course.created_at.to_s
+        }
+      )
     end
   end
 end

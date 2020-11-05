@@ -1,17 +1,17 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "/profiles" do
+RSpec.resource "Api::V1::Profiles" do
   include_context "with API request"
 
   get "/api/v1/profile" do
-    let(:user) { create(:user) }
+    let(:user) { create :user, full_name: "John Smith", email: "john.smith@example.com" }
     let(:jwt) { LoginUser::GenerateJwt.call(user: user).token }
     let(:user_attributes) do
       {
         "id" => user.id,
-        "email" => user.email,
-        "fullName" => user.full_name
+        "email" => "john.smith@example.com",
+        "fullName" => "John Smith"
       }
     end
 
@@ -19,7 +19,7 @@ RSpec.resource "/profiles" do
       before { header "Authorization", "JWT #{jwt}" }
 
       example_request "returns current user's profile" do
-        expect(response_body).to match_json("user" => user_attributes)
+        expect(response).to include(user: user_attributes)
       end
     end
 
