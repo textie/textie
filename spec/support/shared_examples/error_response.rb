@@ -11,7 +11,6 @@
 #
 # it_behaves_like "error response", "email" => %w[blank invalid]
 
-# False positive
 RSpec.shared_examples "error response" do |errors_hash|
   let(:errors_matcher) do
     errors_hash.transform_values do |errors|
