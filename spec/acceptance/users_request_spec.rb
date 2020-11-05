@@ -2,8 +2,6 @@ require "rails_helper"
 require "rspec_api_documentation/dsl"
 
 RSpec.resource "Users" do
-  include_context "with API request"
-
   post "/api/v1/users" do
     with_options scope: :user, with_example: true do
       parameter :email, required: true
@@ -15,16 +13,15 @@ RSpec.resource "Users" do
     let(:full_name) { "John Smith" }
     let(:password) { "123456" }
 
-    let(:response_attributes) do
-      {
-        "id" => be_instance_of(Integer),
-        "fullName" => "John Smith",
-        "email" => "john.smith@example.spec"
-      }
-    end
-
     example_request "Register/sign up" do
-      expect(response).to include(user: response_attributes)
+      expect(response_status).to eq(201)
+      expect(response).to include(
+        user: {
+          "id" => be_instance_of(Integer),
+          "fullName" => "John Smith",
+          "email" => "john.smith@example.spec"
+        }
+      )
     end
 
     context "when email already taken" do

@@ -2,11 +2,9 @@ require "rspec_api_documentation"
 
 RspecApiDocumentation.configure do |config|
   config.docs_dir = Rails.root.join("doc")
-
-  config.format = %i[json]
-  config.request_body_formatter = proc do |params|
-    params.empty? ? nil : JSON.generate(params)
-  end
+  config.format = :json
+  config.keep_source_order = true
+  config.request_body_formatter = :json
 
   config.curl_host = "http://lvh.me:3000"
   config.curl_headers_to_filter = %w[Host Cookie Origin]

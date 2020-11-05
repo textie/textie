@@ -38,7 +38,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjIxNn0.WMVJJ4nxhRAbXicNlQnQWwwNiNK_MsmO0wDneHqC4e0\"\n}",
+      "response_body": "{\n  \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQyOH0.keLk0l7SBf40HgtjJz0EV8f1ZuAeMkNNnlndvON_vEg\"\n}",
       "response_headers": {
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8"

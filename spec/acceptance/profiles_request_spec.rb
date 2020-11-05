@@ -2,8 +2,6 @@ require "rails_helper"
 require "rspec_api_documentation/dsl"
 
 RSpec.resource "Profiles" do
-  include_context "with API request"
-
   get "/api/v1/profile" do
     let(:user) { create :user, full_name: "John Smith", email: "john.smith@example.com" }
     let(:jwt) { LoginUser::GenerateJwt.call(user: user).token }

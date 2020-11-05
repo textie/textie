@@ -1,43 +1,16 @@
 {
   "resources": [
     {
-      "name": "Courses",
-      "explanation": null,
-      "examples": [
-        {
-          "description": "Create a course",
-          "link": "courses/create_a_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses",
-          "method": "post"
-        },
-        {
-          "description": "Get detailed info on specific course",
-          "link": "courses/get_detailed_info_on_specific_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:id",
-          "method": "get"
-        },
-        {
-          "description": "List available courses",
-          "link": "courses/list_available_courses.json",
-          "groups": "all",
-          "route": "/api/v1/courses",
-          "method": "get"
-        },
-        {
-          "description": "Update a course",
-          "link": "courses/update_a_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:id",
-          "method": "put"
-        }
-      ]
-    },
-    {
       "name": "Courses/Enrollments",
       "explanation": null,
       "examples": [
+        {
+          "description": "Get rejected when enrolling for enrolled course",
+          "link": "courses/enrollments/get_rejected_when_enrolling_for_enrolled_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "post"
+        },
         {
           "description": "Enroll for a course",
           "link": "courses/enrollments/enroll_for_a_course.json",
@@ -53,11 +26,11 @@
           "method": "get"
         },
         {
-          "description": "Get rejected when enrolling for enrolled course",
-          "link": "courses/enrollments/get_rejected_when_enrolling_for_enrolled_course.json",
+          "description": "See enrollment details if already enrolled",
+          "link": "courses/enrollments/see_enrollment_details_if_already_enrolled.json",
           "groups": "all",
           "route": "/api/v1/courses/:course_id/enrollment",
-          "method": "post"
+          "method": "get"
         },
         {
           "description": "Leave/unenroll a course",
@@ -72,13 +45,6 @@
           "groups": "all",
           "route": "/api/v1/courses/:course_id/enrollment",
           "method": "delete"
-        },
-        {
-          "description": "See enrollment details if already enrolled",
-          "link": "courses/enrollments/see_enrollment_details_if_already_enrolled.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:course_id/enrollment",
-          "method": "get"
         }
       ]
     },
@@ -103,19 +69,53 @@
       ]
     },
     {
+      "name": "Courses",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get detailed info on specific course",
+          "link": "courses/get_detailed_info_on_specific_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:id",
+          "method": "get"
+        },
+        {
+          "description": "Create a course",
+          "link": "courses/create_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "post"
+        },
+        {
+          "description": "List available courses",
+          "link": "courses/list_available_courses.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "get"
+        },
+        {
+          "description": "Update a course",
+          "link": "courses/update_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:id",
+          "method": "put"
+        }
+      ]
+    },
+    {
       "name": "Sessions",
       "explanation": null,
       "examples": [
         {
-          "description": "Create a session/sign in/log in",
-          "link": "sessions/create_a_sessionsign_inlog_in.json",
+          "description": "Get rejected with invalid credentials",
+          "link": "sessions/get_rejected_with_invalid_credentials.json",
           "groups": "all",
           "route": "/api/v1/sessions",
           "method": "post"
         },
         {
-          "description": "Get rejected with invalid credentials",
-          "link": "sessions/get_rejected_with_invalid_credentials.json",
+          "description": "Create a session/sign in/log in",
+          "link": "sessions/create_a_sessionsign_inlog_in.json",
           "groups": "all",
           "route": "/api/v1/sessions",
           "method": "post"

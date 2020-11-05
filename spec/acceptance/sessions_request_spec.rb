@@ -2,8 +2,6 @@ require "rails_helper"
 require "rspec_api_documentation/dsl"
 
 RSpec.resource "Sessions" do
-  include_context "with API request"
-
   post "/api/v1/sessions" do
     with_options scope: :session, with_example: true do
       parameter :email, required: true
