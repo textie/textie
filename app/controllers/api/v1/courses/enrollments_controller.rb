@@ -16,11 +16,9 @@ module Api
         end
 
         def create
-          if new_enrollment.save
-            render :show, locals: { enrollment: new_enrollment }, status: :created
-          else
-            render json: { errors: new_enrollment.errors }, status: :unprocessable_entity
-          end
+          new_enrollment.save
+
+          respond_with new_enrollment
         end
 
         def destroy
@@ -36,6 +34,7 @@ module Api
 
         def enrollment_params
           { course: course, user: current_user }
+          # params.fetch(:enrollment).permit(:user_id)
         end
       end
     end

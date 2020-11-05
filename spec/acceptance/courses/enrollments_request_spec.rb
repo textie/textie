@@ -35,10 +35,8 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
       example_request "enrolls this course" do
         expect(status).to eq(201)
         expect(response).to include(
-          enrollment: {
-            course_id: course.id,
-            user_id: current_user.id
-          }
+          course_id: course.id,
+          user_id: current_user.id
         )
       end
     end

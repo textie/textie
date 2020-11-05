@@ -16,6 +16,7 @@ gem "decent_exposure", "~> 3.0.0"
 gem "interactor"
 gem "jbuilder", "~> 2.7"
 gem "jwt"
+gem "responders"
 
 group :development, :test do
   gem "brakeman", require: false

@@ -195,6 +195,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.1)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rexml (3.2.4)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -298,6 +301,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.0.3.4)
   rails-erd
+  responders
   rspec-its
   rspec-rails
   rspec_api_documentation
