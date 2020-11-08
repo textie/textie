@@ -7,7 +7,7 @@ module Api
 
       def create
         if user.save
-          render :show, status: :created
+          render json: user, status: :created
         else
           render json: { errors: user.errors }, status: :unprocessable_entity
         end

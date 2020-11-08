@@ -21,7 +21,7 @@ Layout/ExtraSpacing:
     - config/**/*
 
 Layout/LineLength:
-  Max: 95
+  Max: 80
 
 Layout/SpaceAroundOperators:
   Exclude:

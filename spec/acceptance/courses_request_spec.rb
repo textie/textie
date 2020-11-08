@@ -3,7 +3,6 @@ require "rspec_api_documentation/dsl"
 
 RSpec.resource "Courses" do
   include_context "with authorized API request"
-  include_context "when time is frozen"
 
   let!(:first_course) do
     create(
@@ -29,15 +28,15 @@ RSpec.resource "Courses" do
               id: first_course.id,
               title: "The best footbal player",
               description: "Lionel Messi",
-              author_id: first_course.author_id,
-              created_at: current_time.to_s
+              authorId: first_course.author_id,
+              createdAt: be_a_datetime_string(first_course.created_at)
             },
             {
               id: second_course.id,
               title: "The most popular programming languages",
               description: "C is the most popular programming language.",
-              author_id: second_course.author_id,
-              created_at: current_time.to_s
+              authorId: second_course.author_id,
+              createdAt: be_a_datetime_string(second_course.created_at)
             }
           ]
         )
@@ -64,8 +63,8 @@ RSpec.resource "Courses" do
           id: course.id,
           title: "CS 101",
           description: "Computer Science for beginners",
-          author_id: course.author_id,
-          created_at: course.created_at.to_s
+          authorId: course.author_id,
+          createdAt: be_a_datetime_string(course.created_at)
         }
       )
     end
@@ -81,15 +80,22 @@ RSpec.resource "Courses" do
     let(:description) { "API testing course" }
 
     example_request "Create a course" do
+      expect(status).to eq(201)
       expect(response).to include(
         course: {
           id: be_an(Integer),
           title: "Course creating 101",
           description: "API testing course",
-          author_id: be_an(Integer),
-          created_at: be_a(String)
+          authorId: be_an(Integer),
+          createdAt: be_a_datetime_string
         }
       )
+    end
+
+    context "with no title" do
+      let(:title) { nil }
+
+      it_behaves_like "error response", title: ["3"]
     end
   end
 
@@ -106,13 +112,14 @@ RSpec.resource "Courses" do
     let(:description) { "Updating course titles and descriptions" }
 
     example_request "Update a course" do
+      expect(status).to eq(200)
       expect(response).to include(
         course: {
           id: course.id,
           title: "Updating courses guide",
           description: "Updating course titles and descriptions",
-          author_id: course.author_id,
-          created_at: course.created_at.to_s
+          authorId: course.author_id,
+          createdAt: be_a_datetime_string(course.created_at)
         }
       )
     end
