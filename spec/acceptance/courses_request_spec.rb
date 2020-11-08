@@ -95,7 +95,13 @@ RSpec.resource "Courses" do
     context "with no title" do
       let(:title) { nil }
 
-      it_behaves_like "error response", title: ["3"]
+      it_behaves_like "error response", title: ["blank"]
+    end
+
+    context "with no description" do
+      let(:description) { nil }
+
+      it_behaves_like "error response", description: ["blank"]
     end
   end
 
@@ -122,6 +128,12 @@ RSpec.resource "Courses" do
           createdAt: be_a_datetime_string(course.created_at)
         }
       )
+    end
+
+    context "with no title" do
+      let(:title) { nil }
+
+      it_behaves_like "error response", title: ["blank"]
     end
   end
 end

@@ -30,21 +30,21 @@ RSpec.resource "Users" do
 
       before { create(:user, email: "taken@email.com") }
 
-      it_behaves_like "error response", "email" => ["taken"]
+      it_behaves_like "error response", email: ["taken"]
     end
 
     context "when no email provided or invalid email" do
       let(:email) { "" }
       let(:password) { "123456" }
 
-      it_behaves_like "error response", "email" => %w[blank invalid]
+      it_behaves_like "error response", email: %w[blank invalid]
     end
 
     context "when no password provided" do
       let(:email) { "linus.torvalds@gmail.com" }
       let(:password) { "" }
 
-      it_behaves_like "error response", "password" => ["blank"]
+      it_behaves_like "error response", password: ["blank"]
     end
   end
 end
