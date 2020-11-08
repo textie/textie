@@ -14,12 +14,12 @@
   "requests": [
     {
       "request_method": "DELETE",
-      "request_path": "/api/v1/courses/1277/enrollment",
+      "request_path": "/api/v1/courses/91/enrollment",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQxMn0.KiZsX9RxKfOl9Y-JvymhlEKAsxV9f0shqgeX0ZUUV3M"
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTM0fQ.YzXgK98KHgQUKBNbzWzHJjRFMZ8DfjrdMBfDkhSrUWg"
       },
       "request_query_parameters": {
       },
@@ -32,7 +32,7 @@
         "Content-Type": "application/json"
       },
       "response_content_type": "application/json",
-      "curl": "curl \"http://lvh.me:3000/api/v1/courses/1277/enrollment\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQxMn0.KiZsX9RxKfOl9Y-JvymhlEKAsxV9f0shqgeX0ZUUV3M\""
+      "curl": "curl \"http://lvh.me:3000/api/v1/courses/91/enrollment\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTM0fQ.YzXgK98KHgQUKBNbzWzHJjRFMZ8DfjrdMBfDkhSrUWg\""
     }
   ]
 }

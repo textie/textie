@@ -14,25 +14,25 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/courses/1275/enrollment",
+      "request_path": "/api/v1/courses/88/enrollment",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQwOH0.ASubrYi9cRjhVz5OiBCytmG4KAzI5sNoN2KD8hdQL1Y"
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTI4fQ.ynQuBZoLWUy5ntdyj51Q3vk-8OSphB_DtCr4xmJ7F0I"
       },
       "request_query_parameters": {
       },
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"enrollment\": {\n    \"user_id\": 2408,\n    \"course_id\": 1275\n  }\n}",
+      "response_body": "{\n  \"enrollment\": {\n    \"id\": 67,\n    \"userId\": 128,\n    \"courseId\": 88\n  }\n}",
       "response_headers": {
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl -g \"http://lvh.me:3000/api/v1/courses/1275/enrollment\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQwOH0.ASubrYi9cRjhVz5OiBCytmG4KAzI5sNoN2KD8hdQL1Y\""
+      "curl": "curl -g \"http://lvh.me:3000/api/v1/courses/88/enrollment\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTI4fQ.ynQuBZoLWUy5ntdyj51Q3vk-8OSphB_DtCr4xmJ7F0I\""
     }
   ]
 }
