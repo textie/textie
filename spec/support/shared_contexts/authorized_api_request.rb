@@ -4,5 +4,7 @@ RSpec.shared_context "with authorized API request" do
   let(:current_user) { create(:user) }
   let(:jwt) { LoginUser::GenerateJwt.call(user: current_user).token }
 
-  before { header "Authorization", "JWT #{jwt}" }
+  before do
+    header "Authorization", "JWT #{jwt}"
+  end
 end
