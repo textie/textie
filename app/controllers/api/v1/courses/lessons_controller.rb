@@ -3,8 +3,8 @@ module Api
     module Courses
       class LessonsController < ApplicationController
         expose :course
-        expose :lessons, parent: :course
-        expose :lesson
+        expose :lesson, parent: :course, find_by: :order
+        expose :lessons, from: :course
 
         def index
           render json: lessons
