@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       resources :courses, only: %i[index show create update] do
         resource :enrollment, only: %i[show create destroy], module: :courses
+        resources :lessons, module: :courses
       end
     end
   end
