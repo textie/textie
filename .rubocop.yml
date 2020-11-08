@@ -50,10 +50,6 @@ RSpec/EmptyExampleGroup:
   Exclude:
     - spec/acceptance/**/*.rb
 
-# Buggy cop
-RSpec/FactoryBot/CreateList:
-  Enabled: false
-
 RSpec/MultipleExpectations:
   Exclude:
     - spec/acceptance/**/*.rb
