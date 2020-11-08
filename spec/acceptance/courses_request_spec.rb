@@ -91,6 +91,18 @@ RSpec.resource "Courses" do
         }
       )
     end
+
+    context "with no title" do
+      let(:title) { nil }
+
+      it_behaves_like "error response", title: ["blank"]
+    end
+
+    context "with no description" do
+      let(:description) { nil }
+
+      it_behaves_like "error response", description: ["blank"]
+    end
   end
 
   put "/api/v1/courses/:id" do
@@ -115,6 +127,12 @@ RSpec.resource "Courses" do
           created_at: course.created_at.to_s
         }
       )
+    end
+
+    context "with no title" do
+      let(:title) { nil }
+
+      it_behaves_like "error response", title: ["blank"]
     end
   end
 end
