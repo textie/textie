@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.7.2'
+          ruby-version: 2.7
       - name: Cache bundle
         uses: actions/cache@v1
         with:
@@ -28,7 +28,8 @@ jobs:
       - name: Install gems
         run: |
           gem install bundler
-          bundle install --path .bundle --jobs 4
+          bundle config set path .bundle
+          bundle install --jobs 4
       - name: Check code
         run: bin/rubocop
   rspec:
@@ -52,7 +53,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.7.2'
+          ruby-version: 2.7
       - name: Cache bundle
         uses: actions/cache@v1
         with:
@@ -62,7 +63,8 @@ jobs:
       - name: Install gems
         run: |
           gem install bundler
-          bundle install --path .bundle --jobs 4
+          bundle config set path .bundle
+          bundle install --jobs 4
       - name: Migrate database
         env:
           DATABASE_URL: ${{ env.DATABASE_URL }}
