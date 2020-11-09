@@ -3,5 +3,5 @@ class Lesson < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
-  validates :order, uniqueness: { scope: :course }
+  validates :order, presence: true, uniqueness: { scope: :course }
 end

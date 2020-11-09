@@ -15,11 +15,12 @@ module Api
         end
 
         def create
-          if lesson.save
-            render json: lesson, status: :created
+          result = CreateLesson.call(lesson: lesson)
+          if result.success?
+            render json: result.lesson, include: [], status: :created
           else
             render json: {
-              errors: lesson.errors
+              errors: result.errors
             }, status: :unprocessable_entity
           end
         end
@@ -43,7 +44,9 @@ module Api
         private
 
         def lesson_params
-          params.require(:lesson).permit(:title, :content, :order)
+          params.require(:lesson).permit(
+            :title, :content, :order
+          ).merge(course: course)
         end
       end
     end

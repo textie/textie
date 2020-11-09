@@ -5,7 +5,7 @@ RSpec.resource "Courses/Lessons" do
   include_context "with authorized API request"
 
   let(:course_id) { course.id }
-  let(:course) { create(:course) }
+  let(:course) { create(:course, title: "Ruby on Rails basics") }
 
   get "/api/v1/courses/:course_id/lessons" do
     before do
@@ -56,9 +56,47 @@ RSpec.resource "Courses/Lessons" do
       parameter :content, required: true
       parameter :order
     end
+
+    let(:title) { "Active Record" }
+    let(:content) { "Active recrod is an ORM pattern..." }
+
+    example_request "Create a lesson" do
+      expect(status).to eq(201)
+      expect(response).to include(
+        lesson: {
+          id: be_an(Integer),
+          title: "Active Record",
+          content: "Active recrod is an ORM pattern...",
+          order: 1
+        }
+      )
+    end
   end
 
-  put "/api/v1/courses/:course_id/lessons/:order"
+  put "/api/v1/courses/:course_id/lessons/:old_lesson_order" do
+    let(:old_lesson_order) { lesson.order }
+    let(:lesson) { create(:lesson, course: course) }
+
+    with_options scope: :lesson, with_example: true do
+      parameter :title
+      parameter :content
+      parameter :order
+    end
+
+    let(:order)
+
+    example_request "Create a lesson" do
+      expect(status).to eq(201)
+      expect(response).to include(
+        lesson: {
+          id: be_an(Integer),
+          title: "Active Record",
+          content: "Active recrod is an ORM pattern...",
+          order: 1
+        }
+      )
+    end
+  end
 
   delete "/api/v1/courses/:course_id/lessons/:order"
 end

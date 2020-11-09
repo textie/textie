@@ -4,7 +4,7 @@ class CreateLessons < ActiveRecord::Migration[6.0]
       t.string :title, null: false
       t.text :content, null: false
       t.references :course, null: false, foreign_key: true, index: false
-      t.integer :order
+      t.integer :order, null: false
 
       t.timestamps
     end

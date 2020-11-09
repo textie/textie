@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_204607) do
     t.string "title", null: false
     t.text "content", null: false
     t.bigint "course_id", null: false
-    t.integer "order"
+    t.integer "order", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id", "order"], name: "index_lessons_on_course_id_and_order", unique: true
