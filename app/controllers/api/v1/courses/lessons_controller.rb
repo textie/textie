@@ -18,7 +18,9 @@ module Api
           if lesson.save
             render json: lesson, status: :created
           else
-            render json: { errors: lesson.errors }, status: :unprocessable_entity
+            render json: {
+              errors: lesson.errors
+            }, status: :unprocessable_entity
           end
         end
 
@@ -26,7 +28,9 @@ module Api
           if lesson.update(lesson_params)
             render json: lesson
           else
-            render json: { errors: lesson.errors }, status: :unprocessable_entity
+            render json: {
+              errors: lesson.errors
+            }, status: :unprocessable_entity
           end
         end
 

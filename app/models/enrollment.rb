@@ -2,9 +2,9 @@ class Enrollment < ApplicationRecord
   belongs_to :user
   belongs_to :course
 
-  validates :course,
+  validates :user_id,
             uniqueness: {
-              scope: :user,
+              scope: :course_id,
               message: I18n.t("enrollment.errors.course_taken")
             }
 end
