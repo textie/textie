@@ -1,5 +1,5 @@
 class LessonSerializer < ActiveModel::Serializer
   attributes :id, :title, :content, :order
 
-  has_one :course
+  belongs_to :course
 end

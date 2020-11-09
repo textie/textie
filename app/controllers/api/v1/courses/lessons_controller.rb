@@ -6,8 +6,12 @@ module Api
         expose :lesson, parent: :course, find_by: :order
         expose :lessons, from: :course
 
+        before_action only: :show do
+          self.class.serialization_scope :detailed
+        end
+
         def index
-          render json: lessons
+          render json: lessons, include: []
         end
 
         def show
@@ -27,7 +31,7 @@ module Api
 
         def update
           if lesson.update(lesson_params)
-            render json: lesson
+            render json: lesson, include: []
           else
             render json: {
               errors: lesson.errors
@@ -38,7 +42,7 @@ module Api
         def destroy
           lesson.destroy
 
-          respond_with lesson
+          render json: lesson, include: []
         end
 
         private

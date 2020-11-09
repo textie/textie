@@ -20,8 +20,7 @@ RSpec.resource "Courses/Lessons" do
             id: be_an(Integer),
             title: "Rails controller",
             content: be_a(String),
-            order: be_an(Integer),
-            course: be_a(Hash)
+            order: be_an(Integer)
           }
         ]
       )
@@ -37,7 +36,7 @@ RSpec.resource "Courses/Lessons" do
       create(:lesson, title: "3. Nested routes", course: course, order: 3)
     end
 
-    example_request "List course lessons" do
+    example_request "Get a lesson" do
       expect(response).to include(
         lesson: {
           id: be_an(Integer),
@@ -75,7 +74,7 @@ RSpec.resource "Courses/Lessons" do
 
   put "/api/v1/courses/:course_id/lessons/:old_lesson_order" do
     let(:old_lesson_order) { lesson.order }
-    let(:lesson) { create(:lesson, course: course) }
+    let(:lesson) { create(:lesson, course: course, order: 5) }
 
     with_options scope: :lesson, with_example: true do
       parameter :title
@@ -83,20 +82,44 @@ RSpec.resource "Courses/Lessons" do
       parameter :order
     end
 
-    let(:order)
+    let(:order) { 6 }
+    let(:title) { "What is ORM?" }
+    let(:content) { "ORM (object-relational mapping) - ..." }
 
-    example_request "Create a lesson" do
-      expect(status).to eq(201)
+    example_request "Update a lesson" do
+      expect(status).to eq(200)
       expect(response).to include(
         lesson: {
           id: be_an(Integer),
-          title: "Active Record",
-          content: "Active recrod is an ORM pattern...",
-          order: 1
+          title: "What is ORM?",
+          content: "ORM (object-relational mapping) - ...",
+          order: 6
         }
       )
     end
   end
 
-  delete "/api/v1/courses/:course_id/lessons/:order"
+  delete "/api/v1/courses/:course_id/lessons/:order" do
+    let(:order) { 9 }
+
+    before do
+      create(
+        :lesson, course: course,
+                 title: "Meaning of life",
+                 content: "42", order: 9
+      )
+    end
+
+    example_request "Delete a lesson" do
+      expect(status).to eq(200)
+      expect(response).to include(
+        lesson: {
+          id: be_an(Integer),
+          title: "Meaning of life",
+          content: "42",
+          order: 9
+        }
+      )
+    end
+  end
 end
