@@ -4,32 +4,33 @@ require "rspec_api_documentation/dsl"
 RSpec.resource "Courses" do
   include_context "with authorized API request"
 
-  let!(:first_course) do
+  let!(:course) do
     create(
-      :course, users: [current_user],
+      :course, author: current_user,
                title: "The best footbal player",
                description: "Lionel Messi"
     )
   end
-  let!(:second_course) do
-    create(
-      :course, users: [current_user],
-               title: "The most popular programming languages",
-               description: "C is the most popular programming language."
-    )
-  end
 
   get "/api/v1/courses" do
-    let(:expected_response) do
-      {
+    let!(:second_course) do
+      create(
+        :course, users: [current_user],
+                 title: "The most popular programming languages",
+                 description: "C is the most popular programming language."
+      )
+    end
+
+    example_request "List available courses" do
+      expect(response).to include({
         courses: match_array(
           [
             {
-              id: first_course.id,
+              id: course.id,
               title: "The best footbal player",
               description: "Lionel Messi",
-              authorId: first_course.author_id,
-              createdAt: be_a_datetime_string(first_course.created_at)
+              authorId: course.author_id,
+              createdAt: be_a_datetime_string(course.created_at)
             },
             {
               id: second_course.id,
@@ -40,29 +41,19 @@ RSpec.resource "Courses" do
             }
           ]
         )
-      }.deep_stringify_keys
-    end
-
-    example_request "List available courses" do
-      expect(response).to include(expected_response)
+      }.deep_stringify_keys)
     end
   end
 
   get "/api/v1/courses/:id" do
     let(:id) { course.id }
-    let(:course) do
-      create(
-        :course, title: "CS 101",
-                 description: "Computer Science for beginners"
-      )
-    end
 
     example_request "Get detailed info on specific course" do
       expect(response).to include(
         course: {
           id: course.id,
-          title: "CS 101",
-          description: "Computer Science for beginners",
+          title: "The best footbal player",
+          description: "Lionel Messi",
           authorId: course.author_id,
           createdAt: be_a_datetime_string(course.created_at)
         }
@@ -107,7 +98,6 @@ RSpec.resource "Courses" do
 
   put "/api/v1/courses/:id" do
     let(:id) { course.id }
-    let(:course) { create(:course, author: current_user) }
 
     with_options scope: :course, with_example: true do
       parameter :title, required: true
