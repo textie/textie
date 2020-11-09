@@ -100,8 +100,8 @@ RSpec.resource "Courses" do
     let(:id) { course.id }
 
     with_options scope: :course, with_example: true do
-      parameter :title, required: true
-      parameter :description, required: true
+      parameter :title
+      parameter :description
     end
 
     let(:title) { "Updating courses guide" }

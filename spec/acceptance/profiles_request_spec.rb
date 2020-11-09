@@ -4,7 +4,7 @@ require "rspec_api_documentation/dsl"
 RSpec.resource "Profiles" do
   get "/api/v1/profile" do
     let(:user) do
-      create :user, full_name: "John Smith", email: "john.smith@example.com"
+      create(:user, full_name: "John Smith", email: "john.smith@example.com")
     end
     let(:jwt) { LoginUser::GenerateJwt.call(user: user).token }
     let(:user_attributes) do
