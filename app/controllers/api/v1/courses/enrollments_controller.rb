@@ -1,7 +1,7 @@
 module Api
   module V1
     module Courses
-      class EnrollmentsController < ApplicationController
+      class EnrollmentsController < AuthenticatedController
         expose :course
         expose :enrollment, parent: :course
         expose :enrollments, fetch: :fetch_enrollments

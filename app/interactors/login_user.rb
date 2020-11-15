@@ -2,5 +2,6 @@ class LoginUser
   include Interactor::Organizer
 
   organize LoginUser::AuthenticateUser,
-           LoginUser::GenerateJwt
+           LoginUser::GenerateAccessToken,
+           RefreshAuthentication::CreateRefreshToken
 end

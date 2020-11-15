@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CoursesController < ApplicationController
+    class CoursesController < AuthenticatedController
       expose :courses, -> { Course.all }
       expose :course, from: :current_user
 

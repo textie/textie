@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe LoginUser::GenerateJwt do
+RSpec.describe LoginUser::GenerateAccessToken do
   subject(:result) { described_class.call(user: user) }
 
   let(:user) { create(:user) }
@@ -19,6 +19,6 @@ RSpec.describe LoginUser::GenerateJwt do
   end
 
   it "exposes token" do
-    expect(result.token).to eq("8")
+    expect(result.access_token).to eq("8")
   end
 end
