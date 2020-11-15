@@ -5,9 +5,9 @@ module Api
         result = LoginUser.call(session_creating_params)
 
         if result.success?
-          render json: result
+          render json: result.to_h.slice(:access_token, :refresh_token)
         else
-          render json: result, status: :unauthorized
+          render json: result.to_h.slice(:error), status: :unauthorized
         end
       end
 
@@ -15,9 +15,9 @@ module Api
         result = RefreshAuthentication.call(session_updating_params)
 
         if result.success?
-          render json: result
+          render json: result.to_h.slice(:access_token, :refresh_token)
         else
-          render json: result, status: :unauthorized
+          render json: result.to_h.slice(:error), status: :unauthorized
         end
       end
 

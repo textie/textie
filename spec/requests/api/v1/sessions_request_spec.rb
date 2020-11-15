@@ -14,7 +14,10 @@ RSpec.describe "Api::V1::Sessions", type: :request do
       before { create(:user, credentials) }
 
       it "responds with token" do
-        expect(response_body).to match("token" => match(/^eyJ.+\..+\..+$/))
+        expect(response_body).to match(
+          "access_token" => match(/^eyJ.+\..+\..+$/),
+          "refresh_token" => match(/^eyJ.+\..+\..+$/),
+        )
       end
     end
 

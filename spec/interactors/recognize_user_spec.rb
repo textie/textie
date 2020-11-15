@@ -6,17 +6,22 @@ RSpec.describe RecognizeUser do
   let(:fake_codec) { instance_double(JwtService) }
   let(:jwt) { "123.456.789" }
   let(:user) { create(:user) }
-  let(:user_attributes) { user.slice("id") }
+  let(:jwt_payload) do
+    {
+      "sub" => user.id,
+      "iat" => Time.current.to_i
+    }
+  end
 
   before do
     allow(JwtService).to receive(:new).and_return(fake_codec)
-    allow(fake_codec).to receive(:decode).and_return(user_attributes)
+    allow(fake_codec).to receive(:decode).and_return(jwt_payload)
   end
 
   it { is_expected.to be_a_success }
 
   it "exposes user" do
-    expect(context.user).to have_attributes(user_attributes)
+    expect(context.user).to eq(user)
   end
 
   context "with invalid token" do

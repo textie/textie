@@ -5,7 +5,7 @@ RSpec.describe "Api::V1::Profiles", type: :request do
 
   describe "GET /api/v1/profile" do
     let(:user) { create(:user) }
-    let(:jwt) { LoginUser::GenerateJwt.call(user: user).token }
+    let(:jwt) { LoginUser::GenerateAccessToken.call(user: user).access_token }
     let(:headers) { { "Authorization" => "JWT #{jwt}" } }
     let(:do_request) { get "/api/v1/profile", headers: headers }
     let(:user_attributes) do
