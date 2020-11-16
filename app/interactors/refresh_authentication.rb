@@ -1,9 +1,7 @@
 class RefreshAuthentication
   include Interactor::Organizer
 
-  organize RefreshAuthentication::FindRefreshToken,
-           RefreshAuthentication::ExposeUser,
-           RefreshAuthentication::DestroyRefreshToken,
+  organize RefreshAuthentication::FindUserByRefreshToken,
            LoginUser::GenerateAccessToken,
            RefreshAuthentication::CreateRefreshToken
 end

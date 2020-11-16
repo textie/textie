@@ -9,7 +9,7 @@ RSpec.describe RecognizeUser do
   let(:jwt_payload) do
     {
       "sub" => user.id,
-      "iat" => Time.current.to_i
+      "iat" => 1_605_556_236
     }
   end
 

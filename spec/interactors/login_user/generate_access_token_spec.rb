@@ -1,9 +1,11 @@
 require "spec_helper"
 
 RSpec.describe LoginUser::GenerateAccessToken do
+  include_context "when time is frozen", Time.utc("2005-07-14 16:42:01 UTC")
+
   subject(:result) { described_class.call(user: user) }
 
-  let(:user) { create(:user) }
+  let(:user) { create(:user, id: 83_437_173) }
   let(:fake_codec) { instance_double(JwtService) }
 
   before do
@@ -13,9 +15,12 @@ RSpec.describe LoginUser::GenerateAccessToken do
 
   it { is_expected.to be_a_success }
 
-  it "invokes jwt codec" do
+  it "encodes user id and current timestamp to JWT" do
     result
-    expect(fake_codec).to have_received(:encode)
+    expect(fake_codec).to have_received(:encode).with(
+      sub: 83_437_173,
+      iat: 1_104_537_600
+    )
   end
 
   it "exposes token" do

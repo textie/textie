@@ -16,7 +16,7 @@ RSpec.describe "Api::V1::Sessions", type: :request do
       it "responds with token" do
         expect(response_body).to match(
           "access_token" => match(/^eyJ.+\..+\..+$/),
-          "refresh_token" => match(/^eyJ.+\..+\..+$/),
+          "refresh_token" => match(/^eyJ.+\..+\..+$/)
         )
       end
     end

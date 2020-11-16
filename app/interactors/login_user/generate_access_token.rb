@@ -18,7 +18,7 @@ class LoginUser
     end
 
     def unix_time
-      Time.current.to_i
+      Time.current.utc.to_i
     end
   end
 end

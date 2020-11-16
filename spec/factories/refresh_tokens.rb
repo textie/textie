@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :refresh_token do
-    user { nil }
+    user
   end
 end

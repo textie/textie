@@ -8,8 +8,7 @@ class RefreshAuthentication
       refresh_token = RefreshToken.create(user: user)
 
       context.refresh_token = JwtService.new.encode(
-        id: refresh_token.id,
-        sub: refresh_token.user_id,
+        id: refresh_token.id
       )
     end
   end

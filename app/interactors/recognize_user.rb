@@ -23,6 +23,6 @@ class RecognizeUser
   end
 
   def jwt_expired?
-    Time.at(payload["iat"]) < TOKEN_LIFETIME.ago
+    Time.utc(payload["iat"]) < TOKEN_LIFETIME.ago
   end
 end
