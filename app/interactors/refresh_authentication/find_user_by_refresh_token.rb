@@ -4,7 +4,6 @@ class RefreshAuthentication
 
     delegate :refresh_token, to: :context
 
-    # TODO: add error explanation
     def call
       fail!("invalid_token") if payload.nil?
 
