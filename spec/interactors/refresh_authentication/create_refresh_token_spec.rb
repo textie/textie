@@ -22,9 +22,10 @@ RSpec.describe RefreshAuthentication::CreateRefreshToken do
   end
 
   it "writes id to JWT" do
-    expect(fake_codec).to receive(:encode).with(
+    call
+
+    expect(fake_codec).to have_receive(:encode).with(
       id: be_an(Integer)
     )
-    call
   end
 end

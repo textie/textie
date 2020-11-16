@@ -9,7 +9,8 @@ RSpec.describe RefreshAuthentication::FindUserByRefreshToken do
 
   before do
     allow(JwtService).to receive(:new).and_return(fake_codec)
-    allow(fake_codec).to receive(:decode).with("a.b.c")
+    allow(fake_codec).to receive(:decode)
+      .with("a.b.c")
       .and_return("id" => refresh_token.id)
   end
 
