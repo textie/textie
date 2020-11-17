@@ -38,6 +38,7 @@ end
 group :test do
   gem "guard-rspec"
   gem "launchy"
+  gem "rspec_api_documentation"
   gem "rspec-its"
   gem "shoulda-matchers"
   gem "timecop"
