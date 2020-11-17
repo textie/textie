@@ -20,7 +20,7 @@ module Api
 
         def update
           if enrollment.update(enrollment_params)
-            render :show, status: :ok, location: enrollment
+            render :show, status: :ok
           else
             render json: { errors: enrollment.errors }, status: :unprocessable_entity
           end
