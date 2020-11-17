@@ -11,7 +11,6 @@
 #
 # it_behaves_like "error response", "email" => %w[blank invalid]
 
-# rubocop:disable RSpec/SharedContext
 RSpec.shared_examples "error response" do |errors_hash|
   let(:errors_matcher) do
     errors_hash.transform_values do |errors|
@@ -19,8 +18,8 @@ RSpec.shared_examples "error response" do |errors_hash|
     end
   end
 
-  example_request "responds with errors" do
+  example "responds with errors", document: false do
+    do_request
     expect(response).to include(errors: errors_matcher)
   end
 end
-# rubocop:enable RSpec/SharedContext

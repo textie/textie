@@ -14,9 +14,10 @@ This is my personal development project.
 ```
 
 * How to run the test suite
+```
+    bin/rspec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* API documentation
+Generate docs running `bin/doc`.
+Docs are available at [/api/v1/docs](localhost:3000/api/v1/docs).

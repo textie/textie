@@ -1,9 +1,7 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "Api::V1::Users" do
-  include_context "with API request"
-
+RSpec.resource "Users" do
   post "/api/v1/users" do
     with_options scope: :user, with_example: true do
       parameter :email, required: true
@@ -15,16 +13,15 @@ RSpec.resource "Api::V1::Users" do
     let(:full_name) { "John Smith" }
     let(:password) { "123456" }
 
-    let(:response_attributes) do
-      {
-        "id" => be_instance_of(Integer),
-        "fullName" => "John Smith",
-        "email" => "john.smith@example.spec"
-      }
-    end
-
-    example_request "creates user" do
-      expect(response).to include(user: response_attributes)
+    example_request "Register/sign up" do
+      expect(response_status).to eq(201)
+      expect(response).to include(
+        user: {
+          "id" => be_instance_of(Integer),
+          "fullName" => "John Smith",
+          "email" => "john.smith@example.spec"
+        }
+      )
     end
 
     context "when email already taken" do
@@ -33,21 +30,21 @@ RSpec.resource "Api::V1::Users" do
 
       before { create(:user, email: "taken@email.com") }
 
-      it_behaves_like "error response", "email" => ["taken"]
+      it_behaves_like "error response", email: ["taken"]
     end
 
     context "when no email provided or invalid email" do
       let(:email) { "" }
       let(:password) { "123456" }
 
-      it_behaves_like "error response", "email" => %w[blank invalid]
+      it_behaves_like "error response", email: %w[blank invalid]
     end
 
     context "when no password provided" do
       let(:email) { "linus.torvalds@gmail.com" }
       let(:password) { "" }
 
-      it_behaves_like "error response", "password" => ["blank"]
+      it_behaves_like "error response", password: ["blank"]
     end
   end
 end

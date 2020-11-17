@@ -1,0 +1,38 @@
+{
+  "resource": "Courses/Enrollments",
+  "resource_explanation": null,
+  "http_method": "DELETE",
+  "route": "/api/v1/courses/:course_id/enrollment",
+  "description": "Leave/unenroll unenrolled course",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "DELETE",
+      "request_path": "/api/v1/courses/1277/enrollment",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQxMn0.KiZsX9RxKfOl9Y-JvymhlEKAsxV9f0shqgeX0ZUUV3M"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 404,
+      "response_status_text": "Not Found",
+      "response_body": null,
+      "response_headers": {
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json"
+      },
+      "response_content_type": "application/json",
+      "curl": "curl \"http://lvh.me:3000/api/v1/courses/1277/enrollment\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQxMn0.KiZsX9RxKfOl9Y-JvymhlEKAsxV9f0shqgeX0ZUUV3M\""
+    }
+  ]
+}

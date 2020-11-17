@@ -1,7 +1,7 @@
 require "rails_helper"
 require "rspec_api_documentation/dsl"
 
-RSpec.resource "Api::V1::Courses::Enrollments" do
+RSpec.resource "Courses/Enrollments" do
   include_context "with authorized API request"
 
   let(:course_id) { course.id }
@@ -11,7 +11,7 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
     context "when user enrolled for the given course" do
       before { create(:enrollment, course: course, user: current_user) }
 
-      example_request "shows enrollment object" do
+      example_request "See enrollment details if already enrolled" do
         expect(status).to eq(200)
         expect(response).to include(
           enrollment: {
@@ -23,7 +23,7 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
     end
 
     context "when user not enrolled for the given course" do
-      example_request "says that there is no enrollment" do
+      example_request "Get error accessing not existing unenrollment" do
         expect(status).to eq(404)
         expect(response).to include(errors: {})
       end
@@ -32,7 +32,7 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
 
   post "/api/v1/courses/:course_id/enrollment" do
     context "when user hasn't enrolled for the course" do
-      example_request "enrolls this course" do
+      example_request "Enroll for a course" do
         expect(status).to eq(201)
         expect(response).to include(
           course_id: course.id,
@@ -44,7 +44,7 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
     context "when user has enrolled for the course" do
       before { create(:enrollment, course: course, user: current_user) }
 
-      example_request "reponds with error" do
+      example_request "Get rejected when enrolling for enrolled course" do
         expect(status).to eq(422)
         expect(response).to include(
           errors: {
@@ -59,13 +59,13 @@ RSpec.resource "Api::V1::Courses::Enrollments" do
     context "when user has enrolled for the course" do
       before { create(:enrollment, course: course, user: current_user) }
 
-      example_request "leaves the course" do
+      example_request "Leave/unenroll a course" do
         expect(status).to eq(200)
       end
     end
 
     context "when user hasn't enrolled for the course" do
-      example_request "reponds with not found" do
+      example_request "Leave/unenroll unenrolled course" do
         expect(status).to eq(404)
       end
     end
