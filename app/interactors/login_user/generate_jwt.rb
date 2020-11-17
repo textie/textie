@@ -5,7 +5,7 @@ class LoginUser
     delegate :user, to: :context
 
     def call
-      context.token = JwtCodec.new.encode(payload)
+      context.token = JwtService.new.encode(payload)
     end
 
     private

@@ -4,10 +4,10 @@ RSpec.describe LoginUser::GenerateJwt do
   subject(:result) { described_class.call(user: user) }
 
   let(:user) { create(:user) }
-  let(:fake_codec) { instance_double(JwtCodec) }
+  let(:fake_codec) { instance_double(JwtService) }
 
   before do
-    allow(JwtCodec).to receive(:new).and_return(fake_codec)
+    allow(JwtService).to receive(:new).and_return(fake_codec)
     allow(fake_codec).to receive(:encode).and_return("8")
   end
 

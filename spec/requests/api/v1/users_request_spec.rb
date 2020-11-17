@@ -8,12 +8,16 @@ RSpec.describe "Api::V1::Users", type: :request do
       post api_v1_users_url, params: { user: user_attributes }
     end
 
-    let(:user_attributes) { attributes_for(:user) }
+    let(:user_attributes) do
+      attributes_for(
+        :user, full_name: "John Smith", email: "john.smith@example.com"
+      )
+    end
     let(:response_attributes) do
       {
         "id" => be_instance_of(Integer),
-        "fullName" => user_attributes[:full_name],
-        "email" => user_attributes[:email]
+        "fullName" => "John Smith",
+        "email" => "john.smith@example.com"
       }
     end
 

@@ -4,7 +4,7 @@ class RecognizeUser
   delegate :token, to: :context
 
   def call
-    payload = JwtCodec.new.decode(token)
+    payload = JwtService.new.decode(token)
     fail! unless payload
     context.user = User.find(payload["id"])
   end
