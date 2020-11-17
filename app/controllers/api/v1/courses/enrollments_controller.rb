@@ -8,7 +8,7 @@ module Api
 
         def show
           if enrollment.present?
-            render json: enrollment, status: :ok
+            respond_with enrollment
           else
             render json: {
               errors: { enrollment: I18n.t("enrollment.errors.not_found") }
