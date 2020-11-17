@@ -48,7 +48,7 @@ RSpec.resource "Courses/Enrollments" do
         expect(status).to eq(422)
         expect(response).to include(
           errors: {
-            course_id: [include("taken")]
+            course: [include("taken")]
           }
         )
       end
