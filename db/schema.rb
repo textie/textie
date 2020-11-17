@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2020_08_14_142059) do
 
   create_table "users", force: :cascade do |t|
     t.citext "email", null: false
-    t.string "full_name", default: "", null: false
-    t.string "password_digest"
+    t.string "full_name", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
