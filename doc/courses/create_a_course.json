@@ -32,20 +32,20 @@
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQxOX0.l6trgQtj3JvVhWeaqHpoK_mKobOHqVFAm7WBb8FfEuQ"
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzI1fQ.hFXitR3Q5zGEQi4K_3fD6sThc3pZQlZoZIPniCf1T30"
       },
       "request_query_parameters": {
       },
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"course\": {\n    \"id\": 1283,\n    \"title\": \"Course creating 101\",\n    \"description\": \"API testing course\",\n    \"author_id\": 2419,\n    \"created_at\": \"2020-11-05 21:43:15 UTC\"\n  }\n}",
+      "response_body": "{\n  \"course\": {\n    \"id\": 132,\n    \"authorId\": 325,\n    \"title\": \"Course creating 101\",\n    \"description\": \"API testing course\",\n    \"createdAt\": \"2020-11-17T21:44:33.790Z\"\n  }\n}",
       "response_headers": {
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://lvh.me:3000/api/v1/courses\" -d '{\"course\":{\"title\":\"Course creating 101\",\"description\":\"API testing course\"}}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQxOX0.l6trgQtj3JvVhWeaqHpoK_mKobOHqVFAm7WBb8FfEuQ\""
+      "curl": "curl \"http://lvh.me:3000/api/v1/courses\" -d '{\"course\":{\"title\":\"Course creating 101\",\"description\":\"API testing course\"}}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzI1fQ.hFXitR3Q5zGEQi4K_3fD6sThc3pZQlZoZIPniCf1T30\""
     }
   ]
 }

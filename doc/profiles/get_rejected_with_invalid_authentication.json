@@ -17,9 +17,9 @@
       "request_path": "/api/v1/profile",
       "request_body": null,
       "request_headers": {
+        "Authorization": "xyz",
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": "xyz"
+        "Accept": "application/json"
       },
       "request_query_parameters": {
       },
@@ -32,7 +32,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl -g \"http://lvh.me:3000/api/v1/profile\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: xyz\""
+      "curl": "curl -g \"http://lvh.me:3000/api/v1/profile\" -X GET \\\n\t-H \"Authorization: xyz\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }

@@ -15,8 +15,9 @@ RSpec.resource "Courses/Enrollments" do
         expect(status).to eq(200)
         expect(response).to include(
           enrollment: {
-            course_id: course.id,
-            user_id: current_user.id
+            id: be_an(Integer),
+            courseId: course.id,
+            userId: current_user.id
           }
         )
       end
@@ -25,7 +26,11 @@ RSpec.resource "Courses/Enrollments" do
     context "when user not enrolled for the given course" do
       example_request "Get error accessing not existing unenrollment" do
         expect(status).to eq(404)
-        expect(response).to include(errors: {})
+        expect(response).to include(
+          errors: {
+            enrollment: include("not found")
+          }
+        )
       end
     end
   end
@@ -35,8 +40,11 @@ RSpec.resource "Courses/Enrollments" do
       example_request "Enroll for a course" do
         expect(status).to eq(201)
         expect(response).to include(
-          course_id: course.id,
-          user_id: current_user.id
+          enrollment: {
+            id: be_an(Integer),
+            courseId: course.id,
+            userId: current_user.id
+          }
         )
       end
     end
@@ -48,7 +56,7 @@ RSpec.resource "Courses/Enrollments" do
         expect(status).to eq(422)
         expect(response).to include(
           errors: {
-            course: [include("taken")]
+            course: [include("enrolled")]
           }
         )
       end

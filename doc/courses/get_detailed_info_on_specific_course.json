@@ -14,25 +14,25 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/courses/1280",
+      "request_path": "/api/v1/courses/137",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQxNX0.UpYe1GecmQCqSWm2TS6AAVFNDZ6CfNbcA4VbmVktbas"
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzMwfQ.0ZFktMOBBE5YKMNloQF84ekkxJKbg83v_SZl3P6cXpY"
       },
       "request_query_parameters": {
       },
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"course\": {\n    \"id\": 1280,\n    \"title\": \"CS 101\",\n    \"description\": \"Computer Science for beginners\",\n    \"author_id\": 2418,\n    \"created_at\": \"2020-11-05 21:43:15 UTC\"\n  }\n}",
+      "response_body": "{\n  \"course\": {\n    \"id\": 137,\n    \"authorId\": 330,\n    \"title\": \"The best footbal player\",\n    \"description\": \"Lionel Messi\",\n    \"createdAt\": \"2020-11-17T21:44:33.966Z\"\n  }\n}",
       "response_headers": {
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl -g \"http://lvh.me:3000/api/v1/courses/1280\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQxNX0.UpYe1GecmQCqSWm2TS6AAVFNDZ6CfNbcA4VbmVktbas\""
+      "curl": "curl -g \"http://lvh.me:3000/api/v1/courses/137\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzMwfQ.0ZFktMOBBE5YKMNloQF84ekkxJKbg83v_SZl3P6cXpY\""
     }
   ]
 }

@@ -21,7 +21,7 @@ Layout/ExtraSpacing:
     - config/**/*
 
 Layout/LineLength:
-  Max: 95
+  Max: 80
 
 Layout/SpaceAroundOperators:
   Exclude:
@@ -32,9 +32,6 @@ Metrics/BlockLength:
     - spec/**/*_spec.rb
 
 Style/Documentation:
-  Enabled: false
-
-Style/EmptyMethod:
   Enabled: false
 
 Style/FrozenStringLiteralComment:

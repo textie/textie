@@ -15,12 +15,14 @@ RSpec.resource "Sessions" do
       before { create(:user, email: email, password: password) }
 
       example_request "Create a session/sign in/log in" do
+        expect(status).to eq(200)
         expect(response).to include(token: match(/^eyJ.+\..+\..+$/))
       end
     end
 
     context "with invalid credentials" do
       example_request "Get rejected with invalid credentials" do
+        expect(status).to eq(401)
         expect(response).to include(error: include("Invalid credentials"))
       end
     end
