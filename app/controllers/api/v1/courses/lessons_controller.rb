@@ -6,10 +6,6 @@ module Api
         expose :lesson, parent: :course, find_by: :order
         expose :lessons, from: :course
 
-        before_action only: :show do
-          self.class.serialization_scope :detailed
-        end
-
         def index
           render json: lessons, include: []
         end
