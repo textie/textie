@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2020_11_15_210227) do
     t.index ["user_id", "course_id"], name: "index_enrollments_on_user_id_and_course_id", unique: true
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.bigint "course_id", null: false
+    t.integer "order", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id", "order"], name: "index_lessons_on_course_id_and_order", unique: true
+  end
+
   create_table "refresh_tokens", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -41,8 +51,8 @@ ActiveRecord::Schema.define(version: 2020_11_15_210227) do
 
   create_table "users", force: :cascade do |t|
     t.citext "email", null: false
-    t.string "full_name", default: "", null: false
-    t.string "password_digest"
+    t.string "full_name", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -51,5 +61,6 @@ ActiveRecord::Schema.define(version: 2020_11_15_210227) do
   add_foreign_key "courses", "users", column: "author_id"
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
+  add_foreign_key "lessons", "courses"
   add_foreign_key "refresh_tokens", "users"
 end

@@ -3,3 +3,7 @@ en:
     expired: "Token expired"
     failure: "Invalid credentials"
     invalid_token: "Invalid authentication token"
+  enrollment:
+    errors:
+      course_taken: "already enrolled"
+      not_found: "not found"

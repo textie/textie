@@ -37,6 +37,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_model_serializers (0.10.10)
+      actionpack (>= 4.1, < 6.1)
+      activemodel (>= 4.1, < 6.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (6.0.3.4)
       activesupport (= 6.0.3.4)
       globalid (>= 0.3.6)
@@ -71,6 +76,8 @@ GEM
       bundler (>= 1.2.0, < 3)
       thor (>= 0.18, < 2)
     byebug (11.1.3)
+    case_transform (0.2)
+      activesupport
     choice (0.2.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
@@ -108,11 +115,14 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    haml (5.2.0)
+      temple (>= 0.8.0)
+      tilt
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     interactor (3.1.2)
-    jbuilder (2.10.0)
-      activesupport (>= 5.0.0)
+    json (2.3.1)
+    jsonapi-renderer (0.2.2)
     jwt (2.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -135,6 +145,9 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.2)
     msgpack (1.3.3)
+    mustache (1.1.1)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
     nenv (0.3.0)
     nio4r (2.5.4)
     nokogiri (1.10.10)
@@ -155,8 +168,14 @@ GEM
     rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-protection (2.1.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    raddocs (2.2.0)
+      haml (>= 4.0)
+      json
+      sinatra (~> 2.0)
     rails (6.0.3.4)
       actioncable (= 6.0.3.4)
       actionmailbox (= 6.0.3.4)
@@ -222,6 +241,10 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
+    rspec_api_documentation (6.1.0)
+      activesupport (>= 3.0.0)
+      mustache (~> 1.0, >= 0.99.4)
+      rspec (~> 3.0)
     rubocop (0.88.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.1)
@@ -244,9 +267,15 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.10.1)
+    ruby2_keywords (0.0.2)
     shellany (0.0.1)
     shoulda-matchers (4.3.0)
       activesupport (>= 4.2.0)
+    sinatra (2.1.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
+      tilt (~> 2.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -258,8 +287,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
+    tilt (2.0.10)
     timecop (0.9.2)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
@@ -274,6 +305,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers (~> 0.10.0)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   brakeman
@@ -286,7 +318,6 @@ DEPENDENCIES
   faker
   guard-rspec
   interactor
-  jbuilder (~> 2.7)
   jwt
   launchy
   letter_opener
@@ -294,11 +325,13 @@ DEPENDENCIES
   pg (>= 1.2.3, < 2.0.0)
   puma (~> 4.1)
   rack-cors
+  raddocs
   rails (~> 6.0.3.4)
   rails-erd
   responders
   rspec-its
   rspec-rails
+  rspec_api_documentation
   rubocop
   rubocop-performance
   rubocop-rails

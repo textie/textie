@@ -7,7 +7,6 @@
 config/master.key
 coverage/*
 db/*.sqlite3
-doc/**/*
 log/*.log
 public/uploads
 rerun.txt

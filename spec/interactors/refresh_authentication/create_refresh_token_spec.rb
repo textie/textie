@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe RefreshAuthentication::CreateRefreshToken do
   subject(:call) { described_class.call(user: user) }
 
-  let(:user) { create(:user, id: 343_173) }
+  let(:user) { create(:user) }
   let(:fake_codec) { instance_double(JwtService) }
 
   before do
@@ -24,8 +24,6 @@ RSpec.describe RefreshAuthentication::CreateRefreshToken do
   it "writes id to JWT" do
     call
 
-    expect(fake_codec).to have_receive(:encode).with(
-      id: be_an(Integer)
-    )
+    expect(fake_codec).to have_received(:encode).with(id: be_an(Integer))
   end
 end

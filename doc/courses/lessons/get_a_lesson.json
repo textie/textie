@@ -1,0 +1,38 @@
+{
+  "resource": "Courses/Lessons",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/api/v1/courses/:course_id/lessons/:order",
+  "description": "Get a lesson",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/courses/3/lessons/2",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6Nn0.hM1DLe6-geYhC-CIeLAZxiB37zQMvZYotNUXhyU7KT4"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"lesson\": {\n    \"id\": 4,\n    \"title\": \"2. Strong params\",\n    \"content\": \"Vel nam tempora. Sapiente quia ea. Tempora et culpa.\\n\\nAut aut quis. Nam fugiat voluptatem. Ipsum non dicta.\\n\\nMaxime eum maiores. Aut et dolorem. Voluptate quod facere.\\n\\nTemporibus soluta cumque. A iure odit. Sit rerum qui.\\n\\nVoluptatem recusandae commodi. Velit molestiae doloremque. Odio unde accusantium.\\n\\nDebitis itaque nesciunt. Sit quidem minima. Adipisci unde nesciunt.\\n\\nDeleniti vitae inventore. Incidunt beatae adipisci. Necessitatibus officia culpa.\\n\\nRepellendus tempore velit. Id deleniti eum. Eligendi voluptate nihil.\\n\\nNostrum vel repudiandae. Temporibus hic vitae. Blanditiis qui eveniet.\\n\\nEnim ut nemo. Beatae sed consequatur. Voluptas consequuntur libero.\\n\\nEius rerum rem. Ipsum odit quia. Voluptas minima amet.\\n\\nReiciendis nobis minus. Totam quod qui. Et et suscipit.\",\n    \"order\": 2,\n    \"course\": {\n      \"id\": 3,\n      \"authorId\": 7,\n      \"title\": \"Ruby on Rails basics\",\n      \"description\": \"Voluptatibus omnis ipsam. Ad non eos. Cum ea illum.\",\n      \"createdAt\": \"2020-11-26T17:15:18.142Z\"\n    }\n  }\n}",
+      "response_headers": {
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://lvh.me:3000/api/v1/courses/3/lessons/2\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6Nn0.hM1DLe6-geYhC-CIeLAZxiB37zQMvZYotNUXhyU7KT4\""
+    }
+  ]
+}
