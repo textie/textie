@@ -1,7 +1,7 @@
 module Api
   module V1
     class CoursesController < AuthenticatedController
-      skip_before_action :authenticate_user!, only: %i[index show]
+      skip_before_action :authenticate_user, only: %i[index show]
 
       expose :courses, -> { Course.all }
       expose :course

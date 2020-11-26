@@ -1,9 +1,9 @@
 require "spec_helper"
 
 RSpec.describe LoginUser::GenerateAccessToken do
-  include_context "when time is frozen", Time.utc("2005-07-14 16:42:01 UTC")
-
   subject(:result) { described_class.call(user: user) }
+
+  include_context "when time is frozen", Time.utc("2005-07-14 16:42:01 UTC")
 
   let(:user) { create(:user, id: 83_437_173) }
   let(:fake_codec) { instance_double(JwtService) }

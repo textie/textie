@@ -2,9 +2,9 @@ module Api
   class AuthenticatedController < BaseController
     attr_reader :current_user
 
-    before_action :authenticate_user!
+    before_action :authenticate_user
 
-    def authenticate_user!
+    def authenticate_user
       authentication = RecognizeUser.call(token: auth_token)
 
       if authentication.success?
