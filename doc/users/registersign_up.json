@@ -45,7 +45,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"user\": {\n    \"id\": 13,\n    \"fullName\": \"John Smith\",\n    \"email\": \"john.smith@example.spec\"\n  }\n}",
+      "response_body": "{\n  \"user\": {\n    \"id\": 344,\n    \"fullName\": \"John Smith\",\n    \"email\": \"john.smith@example.spec\"\n  }\n}",
       "response_headers": {
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8"
