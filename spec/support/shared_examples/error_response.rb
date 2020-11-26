@@ -9,7 +9,7 @@
 # let(:email) { "" }
 # let(:password) { "123456" }
 #
-# it_behaves_like "error response", "email" => %w[blank invalid]
+# it_behaves_like "error response", email: %w[blank invalid]
 
 RSpec.shared_examples "error response" do |errors_hash|
   let(:errors_matcher) do

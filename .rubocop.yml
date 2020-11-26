@@ -16,16 +16,8 @@ AllCops:
     - vendor/**/*
     - tmp/**/*
 
-Layout/ExtraSpacing:
-  Exclude:
-    - config/**/*
-
 Layout/LineLength:
   Max: 80
-
-Layout/SpaceAroundOperators:
-  Exclude:
-    - config/**/*
 
 Metrics/BlockLength:
   Exclude:
@@ -37,19 +29,11 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/RedundantFetchBlock:
-  Exclude:
-    - config/**/*
-
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   Exclude:
     - config/**/*
 
 RSpec/EmptyExampleGroup:
-  Exclude:
-    - spec/acceptance/**/*.rb
-
-RSpec/MultipleExpectations:
   Exclude:
     - spec/acceptance/**/*.rb

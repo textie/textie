@@ -6,18 +6,20 @@ RSpec.resource "Courses" do
 
   let!(:course) do
     create(
-      :course, author: current_user,
-               title: "The best footbal player",
-               description: "Lionel Messi"
+      :course,
+      author: current_user,
+      title: "The best footbal player",
+      description: "Lionel Messi"
     )
   end
 
   get "/api/v1/courses" do
     let!(:second_course) do
       create(
-        :course, users: [current_user],
-                 title: "The most popular programming languages",
-                 description: "C is the most popular programming language."
+        :course,
+        users: [current_user],
+        title: "The most popular programming languages",
+        description: "C is the most popular programming language."
       )
     end
 

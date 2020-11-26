@@ -104,9 +104,10 @@ RSpec.resource "Courses/Lessons" do
 
     before do
       create(
-        :lesson, course: course,
-                 title: "Meaning of life",
-                 content: "42", order: 9
+        :lesson,
+        course: course,
+        title: "Meaning of life",
+        content: "42", order: 9
       )
     end
 

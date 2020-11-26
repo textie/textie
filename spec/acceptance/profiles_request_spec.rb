@@ -9,9 +9,9 @@ RSpec.resource "Profiles" do
     let(:jwt) { LoginUser::GenerateJwt.call(user: user).token }
     let(:user_attributes) do
       {
-        "id" => user.id,
-        "email" => "john.smith@example.com",
-        "fullName" => "John Smith"
+        id: user.id,
+        email: "john.smith@example.com",
+        fullName: "John Smith"
       }
     end
 
