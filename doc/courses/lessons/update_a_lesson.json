@@ -1,0 +1,55 @@
+{
+  "resource": "Courses/Lessons",
+  "resource_explanation": null,
+  "http_method": "PUT",
+  "route": "/api/v1/courses/:course_id/lessons/:old_lesson_order",
+  "description": "Update a lesson",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "lesson",
+      "with_example": true,
+      "name": "title",
+      "description": "Lesson title"
+    },
+    {
+      "scope": "lesson",
+      "with_example": true,
+      "name": "content",
+      "description": "Lesson content"
+    },
+    {
+      "scope": "lesson",
+      "with_example": true,
+      "name": "order",
+      "description": "Lesson order"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PUT",
+      "request_path": "/api/v1/courses/6/lessons/5",
+      "request_body": "{\"lesson\":{\"title\":\"What is ORM?\",\"content\":\"ORM (object-relational mapping) - ...\",\"order\":6}}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTF9.JbSVzh81WGS-s414Cd-nrUxBbeSP6YbV3a8Ka_k1Ml4"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"lesson\": {\n    \"id\": 8,\n    \"title\": \"What is ORM?\",\n    \"content\": \"ORM (object-relational mapping) - ...\",\n    \"order\": 6\n  }\n}",
+      "response_headers": {
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://lvh.me:3000/api/v1/courses/6/lessons/5\" -d '{\"lesson\":{\"title\":\"What is ORM?\",\"content\":\"ORM (object-relational mapping) - ...\",\"order\":6}}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTF9.JbSVzh81WGS-s414Cd-nrUxBbeSP6YbV3a8Ka_k1Ml4\""
+    }
+  ]
+}

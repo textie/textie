@@ -1,40 +1,6 @@
 {
   "resources": [
     {
-      "name": "Courses",
-      "explanation": null,
-      "examples": [
-        {
-          "description": "Update a course",
-          "link": "courses/update_a_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:id",
-          "method": "put"
-        },
-        {
-          "description": "Create a course",
-          "link": "courses/create_a_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses",
-          "method": "post"
-        },
-        {
-          "description": "List available courses",
-          "link": "courses/list_available_courses.json",
-          "groups": "all",
-          "route": "/api/v1/courses",
-          "method": "get"
-        },
-        {
-          "description": "Get detailed info on specific course",
-          "link": "courses/get_detailed_info_on_specific_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:id",
-          "method": "get"
-        }
-      ]
-    },
-    {
       "name": "Sessions",
       "explanation": null,
       "examples": [
@@ -50,6 +16,60 @@
           "link": "sessions/create_a_sessionsign_inlog_in.json",
           "groups": "all",
           "route": "/api/v1/sessions",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Courses/Lessons",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Delete a lesson",
+          "link": "courses/lessons/delete_a_lesson.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/lessons/:order",
+          "method": "delete"
+        },
+        {
+          "description": "Create a lesson",
+          "link": "courses/lessons/create_a_lesson.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/lessons",
+          "method": "post"
+        },
+        {
+          "description": "Get a lesson",
+          "link": "courses/lessons/get_a_lesson.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/lessons/:order",
+          "method": "get"
+        },
+        {
+          "description": "List course lessons",
+          "link": "courses/lessons/list_course_lessons.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/lessons",
+          "method": "get"
+        },
+        {
+          "description": "Update a lesson",
+          "link": "courses/lessons/update_a_lesson.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/lessons/:old_lesson_order",
+          "method": "put"
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Register/sign up",
+          "link": "users/registersign_up.json",
+          "groups": "all",
+          "route": "/api/v1/users",
           "method": "post"
         }
       ]
@@ -87,31 +107,18 @@
           "method": "post"
         },
         {
-          "description": "See enrollment details if already enrolled",
-          "link": "courses/enrollments/see_enrollment_details_if_already_enrolled.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:course_id/enrollment",
-          "method": "get"
-        },
-        {
           "description": "Get error accessing not existing unenrollment",
           "link": "courses/enrollments/get_error_accessing_not_existing_unenrollment.json",
           "groups": "all",
           "route": "/api/v1/courses/:course_id/enrollment",
           "method": "get"
-        }
-      ]
-    },
-    {
-      "name": "Users",
-      "explanation": null,
-      "examples": [
+        },
         {
-          "description": "Register/sign up",
-          "link": "users/registersign_up.json",
+          "description": "See enrollment details if already enrolled",
+          "link": "courses/enrollments/see_enrollment_details_if_already_enrolled.json",
           "groups": "all",
-          "route": "/api/v1/users",
-          "method": "post"
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "get"
         }
       ]
     },
@@ -132,6 +139,40 @@
           "groups": "all",
           "route": "/api/v1/profile",
           "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "List available courses",
+          "link": "courses/list_available_courses.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "get"
+        },
+        {
+          "description": "Create a course",
+          "link": "courses/create_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "post"
+        },
+        {
+          "description": "Get detailed info on specific course",
+          "link": "courses/get_detailed_info_on_specific_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:id",
+          "method": "get"
+        },
+        {
+          "description": "Update a course",
+          "link": "courses/update_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:id",
+          "method": "put"
         }
       ]
     }
