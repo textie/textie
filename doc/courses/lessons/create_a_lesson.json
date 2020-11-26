@@ -1,0 +1,57 @@
+{
+  "resource": "Courses/Lessons",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/courses/:course_id/lessons",
+  "description": "Create a lesson",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "lesson",
+      "with_example": true,
+      "required": true,
+      "name": "title",
+      "description": "Lesson title"
+    },
+    {
+      "scope": "lesson",
+      "with_example": true,
+      "required": true,
+      "name": "content",
+      "description": "Lesson content"
+    },
+    {
+      "scope": "lesson",
+      "with_example": true,
+      "name": "order",
+      "description": "Lesson order"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/courses/2/lessons",
+      "request_body": "{\"lesson\":{\"title\":\"Active Record\",\"content\":\"Active recrod is an ORM pattern...\"}}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.QdJ-W5pCd-8gJW9jya_lYISQPIBbXQLEKXqTM5y7UJE"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\n  \"lesson\": {\n    \"id\": 2,\n    \"title\": \"Active Record\",\n    \"content\": \"Active recrod is an ORM pattern...\",\n    \"order\": 1\n  }\n}",
+      "response_headers": {
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://lvh.me:3000/api/v1/courses/2/lessons\" -d '{\"lesson\":{\"title\":\"Active Record\",\"content\":\"Active recrod is an ORM pattern...\"}}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6NH0.QdJ-W5pCd-8gJW9jya_lYISQPIBbXQLEKXqTM5y7UJE\""
+    }
+  ]
+}

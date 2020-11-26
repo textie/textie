@@ -7,11 +7,11 @@ module Api
       expose :course
 
       def index
-        render json: courses
+        respond_with courses
       end
 
       def show
-        render json: course
+        respond_with course
       end
 
       def create

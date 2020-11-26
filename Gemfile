@@ -27,7 +27,6 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
-  gem "rspec_api_documentation"
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
@@ -38,6 +37,7 @@ end
 group :test do
   gem "guard-rspec"
   gem "launchy"
+  gem "rspec_api_documentation"
   gem "rspec-its"
   gem "shoulda-matchers"
   gem "timecop"

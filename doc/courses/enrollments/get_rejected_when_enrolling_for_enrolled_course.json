@@ -14,12 +14,12 @@
   "requests": [
     {
       "request_method": "POST",
-      "request_path": "/api/v1/courses/92/enrollment",
+      "request_path": "/api/v1/courses/9/enrollment",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTM2fQ.yH-fvFfjp-ZF48U2BP-x0O66EsdUdy2d50yKyiG7aZA"
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTl9.V8lML-Lkcbk37stex9q-q2T5kxjwdv5d_agdjesT8hw"
       },
       "request_query_parameters": {
       },
@@ -32,7 +32,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://lvh.me:3000/api/v1/courses/92/enrollment\" -d '' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTM2fQ.yH-fvFfjp-ZF48U2BP-x0O66EsdUdy2d50yKyiG7aZA\""
+      "curl": "curl \"http://lvh.me:3000/api/v1/courses/9/enrollment\" -d '' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTl9.V8lML-Lkcbk37stex9q-q2T5kxjwdv5d_agdjesT8hw\""
     }
   ]
 }

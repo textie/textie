@@ -1,0 +1,38 @@
+{
+  "resource": "Courses/Lessons",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/api/v1/courses/:course_id/lessons",
+  "description": "List course lessons",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/courses/4/lessons",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6OH0.b3VSzh1dWFmxiy7Z9VU0vSPrsOGA9ZSEPINDRdmKv_I"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"lessons\": [\n    {\n      \"id\": 6,\n      \"title\": \"Rails controller\",\n      \"content\": \"Iusto mollitia aperiam. Cumque inventore in. Aut blanditiis non.\\n\\nQuia reiciendis aliquam. Id vel iusto. Nobis iste est.\\n\\nIn error est. Necessitatibus neque incidunt. Ut dolorem mollitia.\\n\\nSed qui accusantium. Quidem cupiditate dignissimos. Quas et ea.\\n\\nRecusandae velit quam. Voluptas porro ab. Possimus eos voluptas.\\n\\nVoluptatem repudiandae et. Possimus non et. Quae accusantium vel.\\n\\nMolestiae et amet. Et consequuntur accusamus. Delectus incidunt maiores.\\n\\nEnim earum libero. Et voluptatem rerum. Ullam consequuntur aut.\\n\\nUt quisquam magnam. Possimus esse et. Fuga sit tempora.\\n\\nAtque magnam in. Distinctio repellendus nam. Odit iure corporis.\\n\\nDelectus tempora architecto. Libero sapiente facilis. Est soluta quaerat.\",\n      \"order\": 0\n    }\n  ]\n}",
+      "response_headers": {
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://lvh.me:3000/api/v1/courses/4/lessons\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Authorization: JWT eyJhbGciOiJIUzI1NiJ9.eyJpZCI6OH0.b3VSzh1dWFmxiy7Z9VU0vSPrsOGA9ZSEPINDRdmKv_I\""
+    }
+  ]
+}
