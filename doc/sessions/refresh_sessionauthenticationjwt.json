@@ -1,0 +1,50 @@
+{
+  "resource": "Sessions",
+  "resource_explanation": null,
+  "http_method": "PATCH",
+  "route": "/api/v1/sessions",
+  "description": "Refresh session/authentication/jwt",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "session",
+      "with_example": true,
+      "required": true,
+      "name": "access_token",
+      "description": "Session access token"
+    },
+    {
+      "scope": "session",
+      "with_example": true,
+      "required": true,
+      "name": "refresh_token",
+      "description": "Session refresh token"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PATCH",
+      "request_path": "/api/v1/sessions",
+      "request_body": "{\"session\":{\"access_token\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjkxOCwiaWF0IjoxNjA2NDU4MDM0fQ.qCBqcfZtg1p0VEt8zX8rhYADz_ISa0tO_LYdSyyB0fM\",\"refresh_token\":\"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjM2fQ.H_2q352x54q3bqal77ryymxwqqiPf3Ep-6X3y-8M8Pw\"}}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"access_token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjkxOCwiaWF0IjoxNjA2NDU4MDM0fQ.qCBqcfZtg1p0VEt8zX8rhYADz_ISa0tO_LYdSyyB0fM\",\n  \"refresh_token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjM3fQ.7XR7cvRXe9tgL9CjxGNDVo1ho88TRrZWUIr9_zbc0FA\"\n}",
+      "response_headers": {
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://lvh.me:3000/api/v1/sessions\" -d '{\"session\":{\"access_token\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjkxOCwiaWF0IjoxNjA2NDU4MDM0fQ.qCBqcfZtg1p0VEt8zX8rhYADz_ISa0tO_LYdSyyB0fM\",\"refresh_token\":\"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjM2fQ.H_2q352x54q3bqal77ryymxwqqiPf3Ep-6X3y-8M8Pw\"}}' -X PATCH \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\""
+    }
+  ]
+}
