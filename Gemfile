@@ -40,6 +40,7 @@ group :test do
   gem "rspec_api_documentation"
   gem "rspec-its"
   gem "shoulda-matchers"
+  gem "simplecov", "~> 0.19.1"
   gem "timecop"
 end
 
