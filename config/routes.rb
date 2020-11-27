@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       mount Raddocs::App => "/docs"
 
       resources :users, only: %i[create]
-      resource :sessions, only: %i[create update]
+      resource :session, only: %i[create update]
       resource :profile, only: %i[show]
 
       resources :courses, only: %i[index show create update] do

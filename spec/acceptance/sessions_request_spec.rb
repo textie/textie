@@ -2,7 +2,7 @@ require "rails_helper"
 require "rspec_api_documentation/dsl"
 
 RSpec.resource "Sessions" do
-  post "/api/v1/sessions" do
+  post "/api/v1/session" do
     with_options scope: :session, with_example: true do
       parameter :email, required: true
       parameter :password, required: true
@@ -31,7 +31,7 @@ RSpec.resource "Sessions" do
     end
   end
 
-  patch "/api/v1/sessions" do
+  patch "/api/v1/session" do
     with_options scope: :session, with_example: true do
       parameter :access_token, required: true
       parameter :refresh_token, required: true
