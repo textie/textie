@@ -4,6 +4,10 @@ module Api
 
     before_action :authenticate_user
 
+    def self.skip_authentication(only:)
+      skip_before_action :authenticate_user, only: only
+    end
+
     def authenticate_user
       authentication = RecognizeUser.call(token: auth_token)
 
