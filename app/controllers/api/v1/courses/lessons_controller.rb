@@ -1,7 +1,7 @@
 module Api
   module V1
     module Courses
-      class LessonsController < ApplicationController
+      class LessonsController < AuthenticatedApiController
         expose :course
         expose :lesson, parent: :course, find_by: :order
         expose :lessons, from: :course

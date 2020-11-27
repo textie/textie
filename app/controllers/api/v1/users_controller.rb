@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UsersController < BaseController
+    class UsersController < ApiController
       expose :user
 
       def create

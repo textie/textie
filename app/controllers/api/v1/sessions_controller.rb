@@ -1,6 +1,6 @@
 module Api
   module V1
-    class SessionsController < BaseController
+    class SessionsController < ApiController
       def create
         result = LoginUser.call(session_creating_params)
 
