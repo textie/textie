@@ -14,7 +14,7 @@ RSpec.describe LessonPolicy do
   end
 
   describe_rule :index? do
-    succeed
+    succeed "for any user"
   end
 
   describe_rule :show? do
