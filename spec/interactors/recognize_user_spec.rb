@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.describe RecognizeUser do
   subject(:context) { described_class.call(token: jwt) }
 
-  include_context "when time is frozen", Time.zone.parse("2020-11-16 19:50:36 UTC")
+  include_context "when time is frozen",
+                  Time.parse("2020-11-16 19:50:36 UTC").utc
 
   let(:fake_codec) { instance_double(JwtService) }
   let(:jwt) { "123.456.789" }

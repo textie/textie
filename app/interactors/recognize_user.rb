@@ -14,7 +14,7 @@ class RecognizeUser
   private
 
   def jwt_expired?
-    fail!("invalid_token") unless payload && payload.key?("iat")
+    fail!("invalid_token") unless payload&.key?("iat")
 
     Time.at(payload["iat"]).utc < TOKEN_LIFETIME.ago
   end

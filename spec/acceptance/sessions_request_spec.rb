@@ -38,8 +38,12 @@ RSpec.resource "Sessions" do
     end
 
     let(:user) { create(:user) }
-    let(:access_token) { LoginUser::GenerateAccessToken.call(user: user).access_token }
-    let(:refresh_token) { RefreshAuthentication::CreateRefreshToken.call(user: user).refresh_token }
+    let(:access_token) do
+      LoginUser::GenerateAccessToken.call(user: user).access_token
+    end
+    let(:refresh_token) do
+      RefreshAuthentication::CreateRefreshToken.call(user: user).refresh_token
+    end
 
     context "with valid credentials" do
       example_request "Refresh session/authentication/jwt" do
