@@ -4,10 +4,7 @@ SimpleCov.start do
   add_filter "/spec/"
   add_filter "/config/"
 
-  add_group "Models", "app/models"
-  add_group "Controllers", "app/controllers"
-  add_group "Interactors", "app/interactors"
-  add_group "Services", "app/services"
-  add_group "Jobs", "app/jobs"
-  add_group "Serializers", "app/serializers"
+  %w[
+    controllers jobs interactors models serializers services
+  ].each { |group| add_group(group, "app/#{group}") }
 end
