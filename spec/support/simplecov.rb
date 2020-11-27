@@ -1,6 +1,8 @@
-SimpleCov.configure do
-  add_filter %r{^/spec/}
-  add_filter %r{^/config/}
+require "simplecov"
+
+SimpleCov.start do
+  add_filter "/spec/"
+  add_filter "/config/"
 
   add_group "Models", "app/models"
   add_group "Controllers", "app/controllers"
