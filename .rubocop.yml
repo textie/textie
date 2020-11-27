@@ -37,3 +37,4 @@ Style/StringLiterals:
 RSpec/EmptyExampleGroup:
   Exclude:
     - spec/acceptance/**/*.rb
+    - spec/policies/**/*.rb

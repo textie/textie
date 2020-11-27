@@ -1,8 +1,7 @@
 module Api
   module V1
     class CoursesController < AuthorizedApiController
-      skip_authentication only: %i[index show]
-      skip_authorization only: %i[index show]
+      skip_auth only: %i[index show]
 
       expose :courses, -> { Course.all }
       expose :course

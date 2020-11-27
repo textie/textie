@@ -5,7 +5,9 @@ RSpec.resource "Courses/Lessons" do
   include_context "with authorized API request"
 
   let(:course_id) { course.id }
-  let(:course) { create(:course, author: current_user, title: "Ruby on Rails basics") }
+  let(:course) do
+    create(:course, author: current_user, title: "Ruby on Rails basics")
+  end
 
   get "/api/v1/courses/:course_id/lessons" do
     before do

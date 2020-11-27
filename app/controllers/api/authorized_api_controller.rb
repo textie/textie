@@ -13,8 +13,13 @@ module Api
       skip_before_action :authorize_resource!, only: only
     end
 
+    def self.skip_auth(only:)
+      skip_authentication only: only
+      skip_authorization only: only
+    end
+
     def authorize_resource!
-      authorize! self.send(resource_name)
+      authorize! send(resource_name)
     end
 
     def resource_name

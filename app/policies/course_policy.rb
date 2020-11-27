@@ -8,15 +8,11 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def create?
-    user
+    user.present?
   end
 
   def update?
     author?
-  end
-
-  def destroy?
-    false
   end
 
   private

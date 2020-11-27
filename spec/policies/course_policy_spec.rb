@@ -2,19 +2,26 @@ require "rails_helper"
 require "action_policy/rspec/dsl"
 
 RSpec.describe CoursePolicy do
-  let(:user) { build_stubbed(:user) }
   let(:record) { build_stubbed(:course) }
-  let(:context) { { user: user } }
+
+  shared_context "when user is the author of the course" do
+    let(:record) { create(:course, author: current_user) }
+  end
 
   describe_rule :index? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    succeed "for any user"
+  end
+
+  describe_rule :show? do
+    succeed "for any user"
   end
 
   describe_rule :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    succeed "for any user"
   end
 
-  describe_rule :manage? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe_rule :update? do
+    succeed_when "user is the author of the course"
+    failed "when user is not the author"
   end
 end
