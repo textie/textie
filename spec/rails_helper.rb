@@ -1,4 +1,5 @@
 require "simplecov"
+require "support/simplecov.rb"
 SimpleCov.start
 
 require "spec_helper"
