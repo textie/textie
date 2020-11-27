@@ -41,12 +41,22 @@ RSpec.resource "Sessions" do
     let(:access_token) { LoginUser::GenerateAccessToken.call(user: user).access_token }
     let(:refresh_token) { RefreshAuthentication::CreateRefreshToken.call(user: user).refresh_token }
 
-    example_request "Refresh session/authentication/jwt" do
-      expect(status).to eq(200)
-      expect(response).to include(
-        access_token: match(/^eyJ.+\..+\..+$/),
-        refresh_token: match(/^eyJ.+\..+\..+$/)
-      )
+    context "with valid credentials" do
+      example_request "Refresh session/authentication/jwt" do
+        expect(status).to eq(200)
+        expect(response).to include(
+          access_token: match(/^eyJ.+\..+\..+$/),
+          refresh_token: match(/^eyJ.+\..+\..+$/)
+        )
+      end
+    end
+
+    context "with invalid access_token" do
+      let(:refresh_token) { "e.3.j" }
+
+      example_request "Try to refesh session with invalid refesh token" do
+        expect(status).to eq(401)
+      end
     end
   end
 end

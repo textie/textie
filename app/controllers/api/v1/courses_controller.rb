@@ -17,19 +17,13 @@ module Api
       def create
         result = CreateCourse.call(course: course)
 
-        if result.success?
-          render json: course, status: :created
-        else
-          render json: { errors: result.errors }, status: :unprocessable_entity
-        end
+        respond_with result.course
       end
 
       def update
-        if course.update(course_params)
-          render json: course, status: :ok
-        else
-          render json: { errors: course.errors }, status: :unprocessable_entity
-        end
+        course.update(course_params)
+
+        respond_with course
       end
 
       private
