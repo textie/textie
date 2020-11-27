@@ -30,4 +30,23 @@ RSpec.resource "Sessions" do
       end
     end
   end
+
+  patch "/api/v1/sessions" do
+    with_options scope: :session, with_example: true do
+      parameter :access_token, required: true
+      parameter :refresh_token, required: true
+    end
+
+    let(:user) { create(:user) }
+    let(:access_token) { LoginUser::GenerateAccessToken.call(user: user).access_token }
+    let(:refresh_token) { RefreshAuthentication::CreateRefreshToken.call(user: user).refresh_token }
+
+    example_request "Refresh session/authentication/jwt" do
+      expect(status).to eq(200)
+      expect(response).to include(
+        access_token: match(/^eyJ.+\..+\..+$/),
+        refresh_token: match(/^eyJ.+\..+\..+$/)
+      )
+    end
+  end
 end
