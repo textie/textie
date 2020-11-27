@@ -3,9 +3,9 @@ module Api
     include ActionPolicy::Controller
 
     authorize :user, through: :current_user
-
     verify_authorized
 
+    # authorize exposed resource that matches controller name
     before_action :authorize_resource!
 
     def self.skip_authorization(only:)
@@ -13,19 +13,8 @@ module Api
       skip_before_action :authorize_resource!, only: only
     end
 
-    def self.skip_auth(only:)
-      skip_authentication only: only
-      skip_authorization only: only
-    end
-
     def authorize_resource!
       authorize! send(resource_name)
-    end
-
-    def resource_name
-      return controller_name if action_name == "index"
-
-      controller_name.singularize
     end
   end
 end
