@@ -7,3 +7,10 @@ en:
     errors:
       course_taken: "already enrolled"
       not_found: "not found"
+  activerecord:
+    errors:
+      models:
+        question_option:
+          attributes:
+            question:
+              invalid_type: "Question type %{type} is not supported"
