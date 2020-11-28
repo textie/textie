@@ -1,7 +1,7 @@
 module Api
   module V1
     module Courses
-      class EnrollmentsController < AuthenticatedApiController
+      class EnrollmentsController < AuthorizedApiController
         expose :course
         expose :enrollment, -> { Enrollment.find_by(enrollment_params) }
         expose :new_enrollment, -> { Enrollment.new(enrollment_params) }
