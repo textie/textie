@@ -14,8 +14,11 @@ Rails.application.routes.draw do
           resource :enrollment, only: %i[show create destroy]
 
           resources :lessons do
-            resources :multiple_choice_questions, module: :lessons do
-              resources :question_options, module: :multiple_choice_questions
+            scope module: :lessons do
+              resources :multiple_choice_questions do
+                resources :question_options, module: :multiple_choice_questions,
+                                             only: %i[create destroy]
+              end
             end
           end
         end

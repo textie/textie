@@ -7,7 +7,9 @@ module Api
           expose :lesson, parent: :course, find_by: :order
           expose :exercises, from: :course
 
-          def index; end
+          def index
+            respond_with exercises
+          end
         end
       end
     end

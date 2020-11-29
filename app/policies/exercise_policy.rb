@@ -1,10 +1,10 @@
-class LessonPolicy < ApplicationPolicy
+class ExercisePolicy < ApplicationPolicy
   def index?
-    true
+    enrolled?
   end
 
   def show?
-    author? || enrolled?
+    enrolled?
   end
 
   def create?
@@ -22,10 +22,10 @@ class LessonPolicy < ApplicationPolicy
   private
 
   def enrolled?
-    Enrollment.exists?(course_id: record.course_id, user: user)
+    Enrollment.exists?(course_id: record.lesson.course_id, user: user)
   end
 
   def author?
-    allowed_to?(:update?, record.course)
+    allowed_to?(:update?, record.lesson)
   end
 end
