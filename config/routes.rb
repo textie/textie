@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
           resources :lessons do
             scope module: :lessons do
-              resources :multiple_choice_questions, only: %i[create update destroy]
+              resources :exercises, only: %i[index]
+              resources :multiple_choice_questions,
+                        only: %i[create update destroy]
             end
           end
         end

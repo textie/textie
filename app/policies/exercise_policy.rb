@@ -1,10 +1,12 @@
 class ExercisePolicy < ApplicationPolicy
   def index?
-    enrolled?
+    Lesson.find(record.pluck(:lesson_id)).all? do |lesson|
+      allowed_to?(:show?, lesson)
+    end
   end
 
   def show?
-    enrolled?
+    enrolled? || author?
   end
 
   def create?

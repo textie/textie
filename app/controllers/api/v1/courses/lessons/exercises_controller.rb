@@ -5,10 +5,10 @@ module Api
         class ExercisesController < AuthorizedApiController
           expose :course
           expose :lesson, parent: :course, find_by: :order
-          expose :exercises, from: :course
+          expose :exercises, from: :lesson
 
           def index
-            respond_with exercises
+            respond_with exercises, include: []
           end
         end
       end

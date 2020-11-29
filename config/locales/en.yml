@@ -14,3 +14,7 @@ en:
           attributes:
             question:
               invalid_type: "Question type %{type} is not supported"
+        multiple_choice_question:
+          attributes:
+            question_options:
+              at_least_one_correct: "There should be at least 1 correct option"
