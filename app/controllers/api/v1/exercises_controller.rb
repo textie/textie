@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CoursesController < AuthorizedApiController
+    class ExercisesController < AuthorizedApiController
       expose :exercise
 
       def show
