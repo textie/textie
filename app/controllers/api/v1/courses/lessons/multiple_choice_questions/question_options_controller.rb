@@ -10,14 +10,11 @@ module Api
             expose :options, from: :multiple_choice_question
             expose :option, parent: :multiple_choice_question, find_by: :order
 
-            def show
-            end
+            def show; end
 
-            def create
-            end
+            def create; end
 
-            def update
-            end
+            def update; end
           end
         end
       end
