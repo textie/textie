@@ -36,12 +36,14 @@ RSpec.resource "Exercises" do
             type: "MultipleChoiceQuestion",
             title: exercise.title,
             description: exercise.description,
-            questionOptions: match_array([
-              { id: be_an(Integer), value: "4" },
-              { id: be_an(Integer), value: "3" },
-              { id: be_an(Integer), value: "5" },
-              { id: be_an(Integer), value: "4.0" }
-            ])
+            questionOptions: match_array(
+              [
+                { id: be_an(Integer), value: "4" },
+                { id: be_an(Integer), value: "3" },
+                { id: be_an(Integer), value: "5" },
+                { id: be_an(Integer), value: "4.0" }
+              ]
+            )
           }
         )
       end
