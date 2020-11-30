@@ -35,12 +35,10 @@ ActiveRecord::Schema.define(version: 2020_11_28_132308) do
   create_table "exercises", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
-    t.integer "order", null: false
     t.bigint "lesson_id", null: false
     t.string "type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["lesson_id", "order"], name: "index_exercises_on_lesson_id_and_order", unique: true
     t.index ["lesson_id"], name: "index_exercises_on_lesson_id"
   end
 

@@ -4,7 +4,7 @@ module Api
       expose :exercise
 
       def show
-        respond_with exercise
+        respond_with exercise, except: [{ "question_options" => "correct" }]
       end
     end
   end

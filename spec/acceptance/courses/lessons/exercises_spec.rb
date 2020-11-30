@@ -47,13 +47,12 @@ RSpec.resource "Courses/Lessons/Exercises" do
 
       example_request "View lesson's exercises" do
         expect(status).to eq(200)
-        expect(response).to include({
+        expect(response).to include(
           multipleChoiceQuestions: match_array(
             [
               {
                 id: be_an(Integer),
                 type: "MultipleChoiceQuestion",
-                order: 1,
                 lessonId: lesson.id,
                 title: "Java Interview Question #1",
                 description: "What can keyword `static` can be applied to?"
@@ -61,14 +60,13 @@ RSpec.resource "Courses/Lessons/Exercises" do
               {
                 id: be_an(Integer),
                 type: "MultipleChoiceQuestion",
-                order: 2,
                 lessonId: lesson.id,
                 title: "JavaScript Interview Question #2",
                 description: "What are keywords to declare a variable?"
               }
             ]
           )
-        })
+        )
       end
     end
   end

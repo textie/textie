@@ -31,7 +31,6 @@ RSpec.resource "Exercises" do
         expect(response).to include(
           multipleChoiceQuestion: {
             id: exercise.id,
-            order: exercise.order,
             lessonId: exercise.lesson_id,
             type: "MultipleChoiceQuestion",
             title: exercise.title,
