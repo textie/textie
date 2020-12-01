@@ -76,7 +76,7 @@ RSpec.resource "Courses" do
       expect(status).to eq(201)
       expect(response).to include(
         course: {
-          id: be_an(Integer),
+          id: Course.last.id,
           title: "Course creating 101",
           description: "API testing course",
           authorId: be_an(Integer),

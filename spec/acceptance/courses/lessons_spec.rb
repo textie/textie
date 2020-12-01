@@ -65,7 +65,7 @@ RSpec.resource "Courses/Lessons" do
       expect(status).to eq(201)
       expect(response).to include(
         lesson: {
-          id: be_an(Integer),
+          id: Lesson.last.id,
           title: "Active Record",
           content: "Active recrod is an ORM pattern...",
           order: 1
@@ -74,7 +74,7 @@ RSpec.resource "Courses/Lessons" do
     end
   end
 
-  put "/api/v1/courses/:course_id/lessons/:old_lesson_order" do
+  patch "/api/v1/courses/:course_id/lessons/:old_lesson_order" do
     let(:old_lesson_order) { lesson.order }
     let(:lesson) { create(:lesson, course: course, order: 5) }
 

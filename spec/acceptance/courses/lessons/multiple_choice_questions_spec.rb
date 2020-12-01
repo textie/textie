@@ -42,7 +42,7 @@ RSpec.resource "Courses/Lessons/MultipleChoiceQuestions" do
       expect(status).to eq(201)
       expect(response).to include(
         multipleChoiceQuestion: {
-          id: be_an(Integer),
+          id: MultipleChoiceQuestion.last.id,
           type: "MultipleChoiceQuestion",
           title: "Ruby question #1",
           description: "What does `?` (question mark)" \
@@ -68,5 +68,15 @@ RSpec.resource "Courses/Lessons/MultipleChoiceQuestions" do
         }
       )
     end
+  end
+
+  patch "/api/v1/courses/:course_id/lessons" \
+        "/:lesson_order/multiple_choice_questions/:id" do
+    pending
+  end
+
+  delete "/api/v1/courses/:course_id/lessons" \
+         "/:lesson_order/multiple_choice_questions/:id" do
+    pending
   end
 end
