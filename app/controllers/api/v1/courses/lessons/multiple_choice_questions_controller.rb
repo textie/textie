@@ -8,30 +8,28 @@ module Api
           expose :multiple_choice_question
 
           def create
-            question = MultipleChoiceQuestion.create(
+            new_question = NewMultipleChoiceQuestionForm.new(
               multiple_choice_question_params
             )
-            question_options_params.each do |question_option_params|
-              QuestionOption.create(
-                question_option_params.merge(question: question)
-              )
-            end
-            question.reload
-            respond_with question, include: ["question_options"]
+            new_question.save
+            respond_with new_question, include: ["question_options"]
           end
 
           def update
-            render json: {}
+            render json: {}, include: ["question_options"]
           end
 
-          def destory; end
+          def destory
+            multiple_choice_question.destory
+            respond_with multiple_choice_question
+          end
 
           private
 
           def multiple_choice_question_params
             params.require(:multiple_choice_question).permit(
-              :title, :description, question_options: []
-            ).merge(lesson: lesson)
+              :title, :description
+            ).merge(lesson: lesson, question_options: question_options_params)
           end
 
           def question_options_params

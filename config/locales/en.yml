@@ -7,14 +7,14 @@ en:
     errors:
       course_taken: "already enrolled"
       not_found: "not found"
-  activerecord:
+  activemodel:
     errors:
       models:
         question_option:
           attributes:
             question:
               invalid_type: "Question type %{type} is not supported"
-        multiple_choice_question:
+        new_multiple_choice_question_form:
           attributes:
             question_options:
               at_least_one_correct: "There should be at least 1 correct option"
