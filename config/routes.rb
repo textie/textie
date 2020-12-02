@@ -3,13 +3,24 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount Raddocs::App => "/docs"
 
+      resources :exercises, only: %i[show]
       resources :users, only: %i[create]
-      resource :session, only: %i[create update]
+
       resource :profile, only: %i[show]
+      resource :session, only: %i[create update]
 
       resources :courses, only: %i[index show create update] do
-        resource :enrollment, only: %i[show create destroy], module: :courses
-        resources :lessons, module: :courses
+        scope module: :courses do
+          resource :enrollment, only: %i[show create destroy]
+
+          resources :lessons do
+            scope module: :lessons do
+              resources :exercises, only: %i[index]
+              resources :multiple_choice_questions,
+                        only: %i[create update destroy]
+            end
+          end
+        end
       end
     end
   end

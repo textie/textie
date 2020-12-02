@@ -17,7 +17,7 @@ RSpec.resource "Users" do
       expect(response_status).to eq(201)
       expect(response).to include(
         user: {
-          id: be_instance_of(Integer),
+          id: User.last.id,
           fullName: "John Smith",
           email: "john.smith@example.spec"
         }

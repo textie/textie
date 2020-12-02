@@ -19,6 +19,8 @@ class LessonPolicy < ApplicationPolicy
     author?
   end
 
+  private
+
   def enrolled?
     Enrollment.exists?(course_id: record.course_id, user: user)
   end
