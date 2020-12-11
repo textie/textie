@@ -7,9 +7,9 @@ RspecApiDocumentation.configure do |config|
   config.request_body_formatter = :json
 
   config.curl_host = "http://lvh.me:3000"
-  config.curl_headers_to_filter = %w[Host Cookie Origin]
-  config.request_headers_to_include = %w[Content-Type Accept Authorization]
-  config.response_headers_to_include = %w[Content-Type Referrer-Policy]
+  config.curl_headers_to_filter = %w[Host Origin]
+  config.request_headers_to_include = %w[Content-Type Accept Authorization Cookie]
+  config.response_headers_to_include = %w[Content-Type Referrer-Policy Set-Cookie]
 end
 
 # https://github.com/zipmark/rspec_api_documentation/issues/456
