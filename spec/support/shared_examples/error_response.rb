@@ -20,6 +20,6 @@ RSpec.shared_examples "error response" do |errors_hash|
 
   example "responds with errors", document: false do
     do_request
-    expect(response).to include(errors: errors_matcher)
+    expect(body).to include(errors: errors_matcher)
   end
 end

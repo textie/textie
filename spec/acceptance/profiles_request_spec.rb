@@ -19,7 +19,7 @@ RSpec.resource "Profiles" do
       before { header "Authorization", "JWT #{jwt}" }
 
       example_request "Get current user's info" do
-        expect(response).to include(user: user_attributes)
+        expect(body).to include(user: user_attributes)
       end
     end
 

@@ -16,8 +16,10 @@ RSpec.resource "Sessions" do
 
       example_request "Create a session/sign in/log in" do
         expect(status).to eq(200)
-        expect(response).to include(
-          access_token: match(/^eyJ.+\..+\..+$/),
+        expect(body).to include(
+          access_token: match(/^eyJ.+\..+\..+$/)
+        )
+        expect(cookies).to include(
           refresh_token: match(/^eyJ.+\..+\..+$/)
         )
       end
@@ -26,7 +28,7 @@ RSpec.resource "Sessions" do
     context "with invalid credentials" do
       example_request "Get rejected with invalid credentials" do
         expect(status).to eq(401)
-        expect(response).to include(error: include("Invalid credentials"))
+        expect(body).to include(error: include("Invalid credentials"))
       end
     end
   end
@@ -34,7 +36,10 @@ RSpec.resource "Sessions" do
   patch "/api/v1/session" do
     with_options scope: :session, with_example: true do
       parameter :access_token, required: true
-      parameter :refresh_token, required: true
+    end
+
+    before do
+      header "Cookie", "refresh_token=#{refresh_token}"
     end
 
     let(:user) { create(:user) }
@@ -48,8 +53,10 @@ RSpec.resource "Sessions" do
     context "with valid credentials" do
       example_request "Refresh session/authentication/jwt" do
         expect(status).to eq(200)
-        expect(response).to include(
-          access_token: match(/^eyJ.+\..+\..+$/),
+        expect(body).to include(
+          access_token: match(/^eyJ.+\..+\..+$/)
+        )
+        expect(cookies).to include(
           refresh_token: match(/^eyJ.+\..+\..+$/)
         )
       end
