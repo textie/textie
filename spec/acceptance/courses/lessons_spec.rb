@@ -14,7 +14,7 @@ RSpec.resource "Courses/Lessons" do
     end
 
     example_request "List course lessons" do
-      expect(response).to include(
+      expect(body).to include(
         lessons: [
           {
             id: be_an(Integer),
@@ -37,7 +37,7 @@ RSpec.resource "Courses/Lessons" do
     end
 
     example_request "Get a lesson" do
-      expect(response).to include(
+      expect(body).to include(
         lesson: {
           id: be_an(Integer),
           title: "2. Strong params",
@@ -61,7 +61,7 @@ RSpec.resource "Courses/Lessons" do
 
     example_request "Create a lesson" do
       expect(status).to eq(201)
-      expect(response).to include(
+      expect(body).to include(
         lesson: {
           id: be_an(Integer),
           title: "Active Record",
@@ -88,7 +88,7 @@ RSpec.resource "Courses/Lessons" do
 
     example_request "Update a lesson" do
       expect(status).to eq(200)
-      expect(response).to include(
+      expect(body).to include(
         lesson: {
           id: be_an(Integer),
           title: "What is ORM?",
@@ -113,7 +113,7 @@ RSpec.resource "Courses/Lessons" do
 
     example_request "Delete a lesson" do
       expect(status).to eq(200)
-      expect(response).to include(
+      expect(body).to include(
         lesson: {
           id: be_an(Integer),
           title: "Meaning of life",

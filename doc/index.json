@@ -1,26 +1,6 @@
 {
   "resources": [
     {
-      "name": "Sessions",
-      "explanation": null,
-      "examples": [
-        {
-          "description": "Get rejected with invalid credentials",
-          "link": "sessions/get_rejected_with_invalid_credentials.json",
-          "groups": "all",
-          "route": "/api/v1/sessions",
-          "method": "post"
-        },
-        {
-          "description": "Create a session/sign in/log in",
-          "link": "sessions/create_a_sessionsign_inlog_in.json",
-          "groups": "all",
-          "route": "/api/v1/sessions",
-          "method": "post"
-        }
-      ]
-    },
-    {
       "name": "Courses/Lessons",
       "explanation": null,
       "examples": [
@@ -32,11 +12,11 @@
           "method": "delete"
         },
         {
-          "description": "Create a lesson",
-          "link": "courses/lessons/create_a_lesson.json",
+          "description": "Update a lesson",
+          "link": "courses/lessons/update_a_lesson.json",
           "groups": "all",
-          "route": "/api/v1/courses/:course_id/lessons",
-          "method": "post"
+          "route": "/api/v1/courses/:course_id/lessons/:old_lesson_order",
+          "method": "put"
         },
         {
           "description": "Get a lesson",
@@ -53,11 +33,113 @@
           "method": "get"
         },
         {
-          "description": "Update a lesson",
-          "link": "courses/lessons/update_a_lesson.json",
+          "description": "Create a lesson",
+          "link": "courses/lessons/create_a_lesson.json",
           "groups": "all",
-          "route": "/api/v1/courses/:course_id/lessons/:old_lesson_order",
+          "route": "/api/v1/courses/:course_id/lessons",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Create a course",
+          "link": "courses/create_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "post"
+        },
+        {
+          "description": "Get detailed info on specific course",
+          "link": "courses/get_detailed_info_on_specific_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:id",
+          "method": "get"
+        },
+        {
+          "description": "List available courses",
+          "link": "courses/list_available_courses.json",
+          "groups": "all",
+          "route": "/api/v1/courses",
+          "method": "get"
+        },
+        {
+          "description": "Update a course",
+          "link": "courses/update_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:id",
           "method": "put"
+        }
+      ]
+    },
+    {
+      "name": "Profiles",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get current user's info",
+          "link": "profiles/get_current_user's_info.json",
+          "groups": "all",
+          "route": "/api/v1/profile",
+          "method": "get"
+        },
+        {
+          "description": "Get rejected with invalid authentication",
+          "link": "profiles/get_rejected_with_invalid_authentication.json",
+          "groups": "all",
+          "route": "/api/v1/profile",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Courses/Enrollments",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "See enrollment details if already enrolled",
+          "link": "courses/enrollments/see_enrollment_details_if_already_enrolled.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "get"
+        },
+        {
+          "description": "Get error accessing not existing unenrollment",
+          "link": "courses/enrollments/get_error_accessing_not_existing_unenrollment.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "get"
+        },
+        {
+          "description": "Leave/unenroll unenrolled course",
+          "link": "courses/enrollments/leaveunenroll_unenrolled_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "delete"
+        },
+        {
+          "description": "Leave/unenroll a course",
+          "link": "courses/enrollments/leaveunenroll_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "delete"
+        },
+        {
+          "description": "Enroll for a course",
+          "link": "courses/enrollments/enroll_for_a_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "post"
+        },
+        {
+          "description": "Get rejected when enrolling for enrolled course",
+          "link": "courses/enrollments/get_rejected_when_enrolling_for_enrolled_course.json",
+          "groups": "all",
+          "route": "/api/v1/courses/:course_id/enrollment",
+          "method": "post"
         }
       ]
     },
@@ -75,104 +157,29 @@
       ]
     },
     {
-      "name": "Courses/Enrollments",
+      "name": "Sessions",
       "explanation": null,
       "examples": [
         {
-          "description": "Leave/unenroll a course",
-          "link": "courses/enrollments/leaveunenroll_a_course.json",
+          "description": "Refresh session/authentication/jwt",
+          "link": "sessions/refresh_sessionauthenticationjwt.json",
           "groups": "all",
-          "route": "/api/v1/courses/:course_id/enrollment",
-          "method": "delete"
+          "route": "/api/v1/sessions",
+          "method": "patch"
         },
         {
-          "description": "Leave/unenroll unenrolled course",
-          "link": "courses/enrollments/leaveunenroll_unenrolled_course.json",
+          "description": "Get rejected with invalid credentials",
+          "link": "sessions/get_rejected_with_invalid_credentials.json",
           "groups": "all",
-          "route": "/api/v1/courses/:course_id/enrollment",
-          "method": "delete"
-        },
-        {
-          "description": "Get rejected when enrolling for enrolled course",
-          "link": "courses/enrollments/get_rejected_when_enrolling_for_enrolled_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:course_id/enrollment",
+          "route": "/api/v1/sessions",
           "method": "post"
         },
         {
-          "description": "Enroll for a course",
-          "link": "courses/enrollments/enroll_for_a_course.json",
+          "description": "Create a session/sign in/log in",
+          "link": "sessions/create_a_sessionsign_inlog_in.json",
           "groups": "all",
-          "route": "/api/v1/courses/:course_id/enrollment",
+          "route": "/api/v1/sessions",
           "method": "post"
-        },
-        {
-          "description": "Get error accessing not existing unenrollment",
-          "link": "courses/enrollments/get_error_accessing_not_existing_unenrollment.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:course_id/enrollment",
-          "method": "get"
-        },
-        {
-          "description": "See enrollment details if already enrolled",
-          "link": "courses/enrollments/see_enrollment_details_if_already_enrolled.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:course_id/enrollment",
-          "method": "get"
-        }
-      ]
-    },
-    {
-      "name": "Profiles",
-      "explanation": null,
-      "examples": [
-        {
-          "description": "Get rejected with invalid authentication",
-          "link": "profiles/get_rejected_with_invalid_authentication.json",
-          "groups": "all",
-          "route": "/api/v1/profile",
-          "method": "get"
-        },
-        {
-          "description": "Get current user's info",
-          "link": "profiles/get_current_user's_info.json",
-          "groups": "all",
-          "route": "/api/v1/profile",
-          "method": "get"
-        }
-      ]
-    },
-    {
-      "name": "Courses",
-      "explanation": null,
-      "examples": [
-        {
-          "description": "List available courses",
-          "link": "courses/list_available_courses.json",
-          "groups": "all",
-          "route": "/api/v1/courses",
-          "method": "get"
-        },
-        {
-          "description": "Create a course",
-          "link": "courses/create_a_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses",
-          "method": "post"
-        },
-        {
-          "description": "Get detailed info on specific course",
-          "link": "courses/get_detailed_info_on_specific_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:id",
-          "method": "get"
-        },
-        {
-          "description": "Update a course",
-          "link": "courses/update_a_course.json",
-          "groups": "all",
-          "route": "/api/v1/courses/:id",
-          "method": "put"
         }
       ]
     }

@@ -13,7 +13,7 @@ RSpec.resource "Courses/Enrollments" do
 
       example_request "See enrollment details if already enrolled" do
         expect(status).to eq(200)
-        expect(response).to include(
+        expect(body).to include(
           enrollment: {
             id: be_an(Integer),
             courseId: course.id,
@@ -26,7 +26,7 @@ RSpec.resource "Courses/Enrollments" do
     context "when user not enrolled for the given course" do
       example_request "Get error accessing not existing unenrollment" do
         expect(status).to eq(404)
-        expect(response).to include(
+        expect(body).to include(
           errors: {
             enrollment: include("not found")
           }
@@ -39,7 +39,7 @@ RSpec.resource "Courses/Enrollments" do
     context "when user hasn't enrolled for the course" do
       example_request "Enroll for a course" do
         expect(status).to eq(201)
-        expect(response).to include(
+        expect(body).to include(
           enrollment: {
             id: be_an(Integer),
             courseId: course.id,
@@ -54,7 +54,7 @@ RSpec.resource "Courses/Enrollments" do
 
       example_request "Get rejected when enrolling for enrolled course" do
         expect(status).to eq(422)
-        expect(response).to include(
+        expect(body).to include(
           errors: {
             course: [include("enrolled")]
           }

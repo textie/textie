@@ -14,8 +14,8 @@ RSpec.resource "Users" do
     let(:password) { "123456" }
 
     example_request "Register/sign up" do
-      expect(response_status).to eq(201)
-      expect(response).to include(
+      expect(status).to eq(201)
+      expect(body).to include(
         user: {
           id: be_instance_of(Integer),
           fullName: "John Smith",

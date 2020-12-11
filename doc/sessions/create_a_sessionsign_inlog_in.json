@@ -2,7 +2,7 @@
   "resource": "Sessions",
   "resource_explanation": null,
   "http_method": "POST",
-  "route": "/api/v1/sessions",
+  "route": "/api/v1/session",
   "description": "Create a session/sign in/log in",
   "explanation": null,
   "parameters": [
@@ -27,24 +27,26 @@
   "requests": [
     {
       "request_method": "POST",
-      "request_path": "/api/v1/sessions",
+      "request_path": "/api/v1/session",
       "request_body": "{\"session\":{\"email\":\"email@sessions.spec\",\"password\":\"123456\"}}",
       "request_headers": {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Cookie": ""
       },
       "request_query_parameters": {
       },
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MzMxfQ.3Rx-Pv6qG-MPfoWOYbfjf6Tboa2zSGLTdDmIX75DPN8\"\n}",
+      "response_body": "{\n  \"access_token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjc4MCwiaWF0IjoxNjA3NzE3Njc5fQ.8XaaQGSWRdBknrZRzrRVrd1Wx35dC_FMA_OR8xDWz2g\"\n}",
       "response_headers": {
         "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Set-Cookie": "refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTY4fQ.DGN2PajU5x06Enjij_sixWci_gQYOiXntYcIvxhHoo8; HttpOnly",
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://lvh.me:3000/api/v1/sessions\" -d '{\"session\":{\"email\":\"email@sessions.spec\",\"password\":\"123456\"}}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"http://lvh.me:3000/api/v1/session\" -d '{\"session\":{\"email\":\"email@sessions.spec\",\"password\":\"123456\"}}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Cookie: \""
     }
   ]
 }

@@ -1,5 +1,5 @@
-RSpec.shared_context "when time is frozen" do
-  let(:current_time) { Time.current }
+RSpec.shared_context "when time is frozen" do |time|
+  let(:current_time) { time || Time.current }
 
   before { Timecop.freeze(current_time) }
 

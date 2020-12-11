@@ -1,9 +1,7 @@
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersController < ApiController
       expose :user
-
-      skip_before_action :authenticate_user!, only: %i[create]
 
       def create
         if user.save

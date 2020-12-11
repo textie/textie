@@ -24,7 +24,7 @@ RSpec.resource "Courses" do
     end
 
     example_request "List available courses" do
-      expect(response).to include({
+      expect(body).to include({
         courses: match_array(
           [
             {
@@ -51,7 +51,7 @@ RSpec.resource "Courses" do
     let(:id) { course.id }
 
     example_request "Get detailed info on specific course" do
-      expect(response).to include(
+      expect(body).to include(
         course: {
           id: course.id,
           title: "The best footbal player",
@@ -74,7 +74,7 @@ RSpec.resource "Courses" do
 
     example_request "Create a course" do
       expect(status).to eq(201)
-      expect(response).to include(
+      expect(body).to include(
         course: {
           id: be_an(Integer),
           title: "Course creating 101",
@@ -111,7 +111,7 @@ RSpec.resource "Courses" do
 
     example_request "Update a course" do
       expect(status).to eq(200)
-      expect(response).to include(
+      expect(body).to include(
         course: {
           id: course.id,
           title: "Updating courses guide",

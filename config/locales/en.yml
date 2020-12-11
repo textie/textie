@@ -1,5 +1,6 @@
 en:
   authenticate:
+    expired: "Token expired"
     failure: "Invalid credentials"
     invalid_token: "Invalid authentication token"
   enrollment:
