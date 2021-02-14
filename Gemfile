@@ -10,7 +10,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "puma", "~> 4.1"
 gem "rack-cors"
 
-# gem "image_processing", "~> 1.2"
+gem "action_policy", "~> 0.5.3"
 gem "active_model_serializers", "~> 0.10.0"
 gem "bcrypt", "~> 3.1.7"
 gem "decent_exposure", "~> 3.0.0"
